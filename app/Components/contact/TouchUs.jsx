@@ -9,8 +9,7 @@ const TouchUs = () => {
             Get In Touch With Us
           </h2>
           <p className="xl:w-[464px] w-[89%] text-black text-base font-normal font-primary leading-normal mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore{" "}
+          We’re here to answer your queries and provide the best solutions for your pharmaceutical needs.
           </p>
           <form action="" className="flex flex-col mt-8">
             <input

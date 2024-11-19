@@ -11,13 +11,12 @@ const ContactInformation = () => {
         Contact Information
       </h2>
       <p className="lg:w-[548px] mx-auto text-center text-black text-base font-normal font-secondary leading-normal mt-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore{" "}
+We’re here to answer your queries and provide the best solutions for your pharmaceutical needs.
       </p>
       <div className="flex flex-wrap gap-5 justify-center 2xl:max-w-[1440px] 2xl:mx-auto">
-        <CardContact image={PhoneIcon} title="Phone:" info="(12+) 123 3456"/>
-        <CardContact image={EmailIcon} title="Email:" info="support@yoursite.com"/>
-        <CardContact image={LocationIcon} title="Location:" info="121th Haidezign st, Melbourne, AUS 12313"/>
+        <CardContact image={PhoneIcon} title="Phone:" info="+97125067345"/>
+        <CardContact image={EmailIcon} title="Email:" info="info@thepurepharma.com"/>
+        <CardContact image={LocationIcon} title="Location:" info="PPGH+X76 - Kizad - Khalifa Industrial Zone - Abu Dhabi"/>
       </div>
     </>
   );

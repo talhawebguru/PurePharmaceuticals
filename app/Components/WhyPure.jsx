@@ -36,15 +36,7 @@ const WhyPure = () => {
               </div>
               {activeIndex === 0 && (
                 <p className="mt-4 text-white text-base font-normal font-secondary leading-normal w-[90%]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pitecto beatae vitae dicta sunt
-                  explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                  aspernatur quisquam est, qui dolorem ipsum quia dolor sit
-                  amet,
+                  We uphold rigorous quality standards in every product we deliver. From sourcing the finest ingredients to following advanced manufacturing practices, we ensure our products meet global standards for safety and efficacy.
                 </p>
               )}
             </div>
@@ -53,7 +45,7 @@ const WhyPure = () => {
                 className="flex justify-between text-white text-2xl font-normal font-arial leading-relaxed items-center gap-2 cursor-pointer"
                 onClick={() => toggleAccordion(1)}
               >
-                <h2>Exceptional Quality Assurance</h2>{" "}
+                <h2>Innovative Healthcare Solutions</h2>{" "}
                 {activeIndex === 1 ? (
                   <FaAngleUp className="w-6 h-6" />
                 ) : (
@@ -62,15 +54,7 @@ const WhyPure = () => {
               </div>
               {activeIndex === 1 && (
                 <p className="mt-4 text-white text-base font-normal font-secondary leading-normal w-[90%]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pitecto beatae vitae dicta sunt
-                  explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                  aspernatur quisquam est, qui dolorem ipsum quia dolor sit
-                  amet,
+                  Our research-driven approach enables us to create cutting-edge solutions tailored to modern healthcare needs. We strive to improve lives through continuous innovation and technological advancement.
                 </p>
               )}
             </div>
@@ -79,7 +63,7 @@ const WhyPure = () => {
                 className="flex justify-between text-white text-2xl font-normal font-arial leading-relaxed items-center gap-2 cursor-pointer"
                 onClick={() => toggleAccordion(2)}
               >
-                <h2>Exceptional Quality Assurance</h2>{" "}
+                <h2>Customer-Centric Approach</h2>{" "}
                 {activeIndex === 2 ? (
                   <FaAngleUp className="w-6 h-6" />
                 ) : (
@@ -88,15 +72,7 @@ const WhyPure = () => {
               </div>
               {activeIndex === 2 && (
                 <p className="mt-4 text-white text-base font-normal font-secondary leading-normal w-[90%]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pitecto beatae vitae dicta sunt
-                  explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                  aspernatur quisquam est, qui dolorem ipsum quia dolor sit
-                  amet,
+                  At the heart of our mission is you—our customers. We believe in building trust and fostering long-lasting relationships by delivering reliable services and exceptional support.
                 </p>
               )}
             </div>

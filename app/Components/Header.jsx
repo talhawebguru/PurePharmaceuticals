@@ -73,9 +73,9 @@ const Header = () => {
       <div className={`pt-[20px] xl:px-[90px] lg:px-[40px] px-5 `}>
         <div className="hidden 2xl:max-w-[1440px] 2xl:mx-auto lg:flex flex-wrap justify-between text-neutral-dark-gray text-[13px] font-primary ">
           <div className="leading-5 font-normal ">
-            <span>Sample@gmail.com</span>
+            <span>info@thepurepharma.com</span>
             <span> / </span>
-            <span>+04 89 76 4576</span>
+            <span>+97125067345</span>
           </div>
           <div className="flex gap-2 ">
             <SocialIcons icon={<FaFacebookF />} />
