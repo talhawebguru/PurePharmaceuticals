@@ -35,6 +35,7 @@ const Footer = () => {
               <ul className='flex flex-col gap-3 mt-3 text-black text-base font-normal font-secondary leading-normal"'>
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about/company'>About us</Link></li>
+                <li><Link href='/product'>Product</Link></li>
                 <li><Link href="/contact">Contact Us</Link></li>
               </ul>
             </div>
