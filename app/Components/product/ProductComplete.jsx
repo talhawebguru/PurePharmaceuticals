@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ArrowDown from "@/public/images/arrowDown.svg";
 import CategoryList from "./CategoryList";
-import ProductData from "../ProductData";
+import ProductData from "./ProductData";
 
 const ProductComplete = () => {
 

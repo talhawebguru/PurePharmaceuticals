@@ -3,50 +3,15 @@ import Image from "next/image";
 import CorporatePatners from "@/app/Components/about/CorporatePatners";
 import Cmap from "@/public/images/cmap.svg";
 import Banner from "@/public/images/corporateBanner.svg";
-import PageNameBanner from "@/app/Components/PageNameBanner";
-import BreadCrumbs from "@/app/Components/BreadCrumbs";
+import PageNameBanner from "@/app/Components/home/PageNameBanner";
+import BreadCrumbs from "@/app/Components/home/BreadCrumbs";
 const page = () => {
   return (
     <>
       <PageNameBanner image={Banner} title="" />
-      <BreadCrumbs/>
-      <div className="flex flex-wrap md:flex-nowrap  2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-0  md:justify-between justify-center xl:px-[90px] lg:px-[40px] px-5 gap-5">
-        <div className=" md:w-[26%] xl:w-[350px] w-full  mt-14 hidden md:block  ">
-          <div className="xl:w-[350px] pb-3 border-black/40 shadow">
-            <form className="flex mb-3">
-              <input
-                type="text"
-                className="w-full xl:w-[350px]  h-14 px-[16px] py-4 bg-white shadow justify-start items-start gap-2.5 inline-flex text-[#bdbab8] text-[13px] font-normal font-primary leading-tight"
-                placeholder="Search"
-              />
-            </form>
-            <div className="flex items-center content-center justify-between pt-6 mx-4">
-              <h2 className="text-divi-gray text-2xl font-normal font-arial leading-[28.80px]">
-                Oral Solid Dosage
-              </h2>
-            </div>
-            <div className="w-full h-[0px] border border-black mt-6"></div>
-            <div>
-              <h2 className="text-base font-secondary leading-normal text-divi-gray py-5 pl-4">
-                Antihypertensives
-              </h2>
-              <div className="w-full h-[0px] border border-[#eae9e8]"></div>
-
-              <h2 className="text-base font-secondary leading-normal text-divi-gray py-5 pl-4">
-                Antihistamines
-              </h2>
-              <div className="w-full h-[0px] border border-[#eae9e8]"></div>
-              <h2 className="text-base font-secondary leading-normal text-divi-gray py-5 pl-4">
-                Erectile Dysfunction
-              </h2>
-              <div className="w-full h-[0px] border border-[#eae9e8]"></div>
-              <h2 className="text-base font-secondary leading-normal text-divi-gray py-5 pl-4">
-                Lipid Lowering Agents
-              </h2>
-            </div>
-          </div>
-        </div>
-        <div className="xl:w-[70%] md:w-[74%] w-full mt-16">
+      <BreadCrumbs name="Corporate"/>
+      <div className="2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-40 xl:px-[90px] lg:px-[40px] px-5">
+        <div className="mt-9 md:mt-16">
           <div>
             <h2 className="text-primary text-[32px] font-normal font-arial leading-[38.40px]">
               Clients & Partners

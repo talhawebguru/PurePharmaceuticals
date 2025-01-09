@@ -11,22 +11,22 @@ const CorporatePatners = () => {
   return (
     <>
      <div className="mt-16 grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
-          <div className=" h-[150px] bg-[#f9f9f9] flex justify-center items-center ">
+          <div className=" h-[150px] bg-white border border-black/10 flex justify-center items-center ">
             <Image src={Partner1} alt="Partners" />
           </div>
-          <div className="h-[150px] bg-[#f9f9f9] flex justify-center items-center ">
+          <div className="h-[150px] bg-white border border-black/10 flex justify-center items-center ">
             <Image src={Partner2} alt="Partners" />
           </div>
-          <div className="h-[150px] bg-[#f9f9f9] flex justify-center items-center">
+          <div className="h-[150px] bg-white border border-black/10 flex justify-center items-center">
             <Image src={Partner3} alt="Partners" />
           </div>
-          <div className=" h-[150px] bg-[#f9f9f9] flex justify-center items-center  ">
+          <div className=" h-[150px] bg-white border border-black/10 flex justify-center items-center  ">
             <Image src={Partner4} alt="Partners" />
           </div>
-          <div className=" h-[150px] bg-[#f9f9f9] flex justify-center items-center ">
+          <div className=" h-[150px] bg-white border border-black/10 flex justify-center items-center ">
             <Image src={Partner5} alt="Partners" />
           </div>
-          <div className=" h-[150px] bg-[#f9f9f9] flex justify-center items-center ">
+          <div className=" h-[150px] bg-white border border-black/10 flex justify-center items-center ">
             <Image src={Partner6} alt="Partners" />
           </div>
           
