@@ -3,6 +3,7 @@ import Image from "next/image";
 import * as motion from "motion/react-client"
 import LatestNewsImage from "@/public/images/latestNews.png";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import Link from "next/link";
 
 const newsData = [
   {
@@ -40,9 +41,12 @@ const NewsItem = ({ src, alt, title, description }) => (
     <p className="w-[269px] text-[#222222] text-[13px] font-normal font-secondary leading-none mt-3">
       {description}
     </p>
-    <div className="mt-8 w-28 flex items-center gap-3 cursor-pointer">
+    <div className="mt-8 cursor-pointer">
+      <Link href="/news" className="w-28 flex items-center gap-3">
       <p className="underline underline-offset-2">Read More</p>
       <FaLongArrowAltRight />
+      </Link>
+      
     </div>
   </motion.div>
 );
