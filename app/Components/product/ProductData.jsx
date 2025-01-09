@@ -8,7 +8,7 @@ import Product1 from "@/public/images/product1.webp";
 const productData = [
   {
     id:"1",
-    name: "one piece Colostomy Ostomy bag ",
+    name: "Antiseptic Solutions",
     model: "Model: 1106",
     url: Product1,
     action: "View details",
@@ -53,7 +53,7 @@ const displayedProducts = limit ? filteredProducts.slice(0, limit) : filteredPro
       <Image src={item.url} alt={item.name} className="mx-auto " width={200} height={200} />
       <div className="ml-5">
         <h3 className="text-black text-[13px] font-normal font-primary mt-10">{item.model}</h3>
-        <h2 className="text-black text-[13px] font-normal font-primary mt-1">
+        <h2 className="text-black text-lg font-normal font-primary mt-1">
           {item.name}
         </h2>
         <div className="mt-6">

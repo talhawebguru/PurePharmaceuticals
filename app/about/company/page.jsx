@@ -13,7 +13,7 @@ const page = () => {
             <CompanyProfile/>
         </main>
     </>
-  )
+  ) 
 }
 
 export default page

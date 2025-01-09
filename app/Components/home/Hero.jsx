@@ -15,9 +15,9 @@ const Hero = () => {
       >
         <Image src={HeroImg} alt="Company Img" className="w-full" />
       </motion.div>
-      <div className="flex flex-col md:flex-row 2xl:max-w-[1440px] 2xl:mx-auto mt-4 md:mt-0">
+      <div className="flex flex-col md:flex-row 2xl:max-w-[1440px] 2xl:mx-auto  mt-4 md:mt-0">
         <motion.div
-          className="md:w-[55%] mt-1"
+          className="md:w-[55%] mt-1 "
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
