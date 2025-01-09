@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import * as motion from "motion/react-client"
 import Logo from "@/public/images/logo.svg";
 import MenuOpen from "@/public/images/menuOpen.svg";
 import MenuClose from "@/public/images/menuClose.svg";
@@ -71,7 +72,12 @@ const Header = () => {
   return (
     <>
       <div className={`pt-[20px] xl:px-[90px] lg:px-[40px] px-5 `}>
-        <div className="hidden 2xl:max-w-[1440px] 2xl:mx-auto lg:flex flex-wrap justify-between text-neutral-dark-gray text-[13px] font-primary ">
+        <motion.div
+          className="hidden 2xl:max-w-[1440px] 2xl:mx-auto lg:flex flex-wrap justify-between text-neutral-dark-gray text-[13px] font-primary"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="leading-5 font-normal ">
             <span>info@thepurepharma.com</span>
             <span> / </span>
@@ -83,10 +89,15 @@ const Header = () => {
             <SocialIcons icon={<AiFillInstagram />} />
             <SocialIcons icon={<FaYoutube />} />
           </div>
-        </div>
-        <div className="w-full 2xl:max-w-[1440px] 2xl:mx-auto h-[0px] opacity-40 border border-neutral-gray mt-2 mb-5 hidden lg:block"></div>
+        </motion.div>
+        <motion.div
+          className="w-full 2xl:max-w-[1440px] 2xl:mx-auto h-[0px] opacity-40 border border-neutral-gray mt-2 mb-5 hidden lg:block"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        ></motion.div>
 
-        <nav className="flex items-center justify-between 2xl:max-w-[1440px] 2xl:mx-auto  ">
+        <nav className="flex items-center justify-between 2xl:max-w-[1440px] 2xl:mx-auto">
           <div>
             <Link href="/" className="xl::w-[222px]">
               <Image
@@ -265,9 +276,13 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <div className="px-[20px] py-3 text-primary justify-center items-center gap-3 inline-flex border border-primary rounded-lg text-base font-medium font-primary">
+            <motion.div
+              className="px-[20px] py-3 text-primary justify-center items-center gap-3 inline-flex border border-primary rounded-lg text-base font-medium font-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Shop Now <Image src={RightArrow} alt="Right Arrow" />
-            </div>
+            </motion.div>
           </div>
           <div className="lg:hidden">
             <button onClick={toggleMenu} className="">
@@ -279,14 +294,22 @@ const Header = () => {
             </button>
           </div>
         </nav>
-        <div className="w-full h-[0px] opacity-40 border border-[#0000004D] lg:hidden mt-5"></div>
+        <motion.div
+          className="w-full h-[0px] opacity-40 border border-[#0000004D] lg:hidden mt-5"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        ></motion.div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div
-            className={`lg:hidden absolute left-0 w-full z-20 bg-white flex items-center flex-col   transition-all duration-700 ease-in-out  ${
+          <motion.div
+            className={`lg:hidden absolute left-0 w-full z-20 bg-white flex items-center flex-col transition-all duration-700 ease-in-out ${
               isAnimatingOut ? "animationMoveOut " : "animationMove h-[86vh]"
             }`}
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
             <ul className="flex items-center w-full flex-col gap-4 pt-4 text-black text-base font-normal font-secondary leading-tight">
               <li>
@@ -443,16 +466,20 @@ const Header = () => {
               </li>
               <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
             </ul>
-            <div className="px-[25px] mt-12 py-3 bg-primary justify-center items-center gap-4 inline-flex text-white text-base font-medium font-primary">
+            <motion.div
+              className="px-[25px] mt-12 py-3 bg-primary justify-center items-center gap-4 inline-flex text-white text-base font-medium font-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Get this from Jurhy <Image src={RightArrow} alt="Right Arrow" />
-            </div>
+            </motion.div>
             <div className="flex gap-2 mt-10 mb-24">
               <SocialIcons icon={<FaFacebookF />} />
               <SocialIcons icon={<FaTwitter />} />
               <SocialIcons icon={<AiFillInstagram />} />
               <SocialIcons icon={<FaYoutube />} />
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </>

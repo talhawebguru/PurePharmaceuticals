@@ -9,14 +9,21 @@ import Vertical5 from "@/public/images/careMedical.svg";
 import Vertical6 from "@/public/images/ajDrugs.svg";
 import Vertical7 from "@/public/images/jurhy.svg";
 import Marquee from "react-fast-marquee";
+import * as motion from "motion/react-client"
+
 
 const Verticals = () => {
   return (
     <>
       <div className="mt-24 px-14 xs:px-5 2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-0 mb-40">
-        <h2 className="text-black text-2xl font-normal font-['Arial'] leading-relaxed text-center">
+        <motion.h2 
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{once: true}}
+        className="text-primary text-2xl md:text-[42px] font-normal font-arial leading-[44.25px] text-center">
           Our Verticals
-        </h2>
+        </motion.h2>
         <div className="mt-14">
           <div >
             <Marquee autoFill className="">
