@@ -26,7 +26,7 @@ const page = () => {
             Purepharma's CEO, Mr. Musthafa, Meets with Manas Varalwar in
             Abudhabi
           </p>
-          <p className="w-[816px] h-[184px] text-[#222222] text-base font-normal font-secondary leading-normal mt-8">
+          <p className="text-[#222222] text-base font-normal font-secondary leading-normal mt-8">
             Your content goes here. Edit or remove this text inline or in the
             module Content settings. You can also style every aspect of this
             content in the module Design settings and even apply custom CSS to
@@ -39,7 +39,7 @@ const page = () => {
             aspect of this content in the module Design settings and even apply
             custom CSS to this text in the module Advanced settings.
           </p>
-          <p className="w-[816px] h-[184px] text-[#222222] text-base font-normal font-secondary leading-normal mt-8">
+          <p className=" text-[#222222] text-base font-normal font-secondary leading-normal mt-8">
             Your content goes here. Edit or remove this text inline or in the
             module Content settings. You can also style every aspect of this
             content in the module Design settings and even apply custom CSS to
