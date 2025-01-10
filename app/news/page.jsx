@@ -5,6 +5,7 @@ import PageNameBanner from "../Components/home/PageNameBanner";
 import Banner from "@/public/images/newsBanner.svg";
 import BreadCrumbs from "../Components/home/BreadCrumbs";
 import Newss from "@/public/images/newss.svg";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -48,9 +49,12 @@ const page = () => {
                     Purepharma meeting with Manas Varalwar in Abudhabi
                   </p>
                   <div className="mt-9">
-                    <span className="underline text-[13px] font-normal font-secondary leading-none text-[#222222]">
-                      Read More
-                    </span>
+                    <Link href={"/news/news1"} >
+                      <span className="underline text-[13px] font-normal font-secondary leading-none text-[#222222]">
+                        Read More
+                      </span>
+                    </Link>
+                   
                   </div>
                 </div>
               </motion.div>
