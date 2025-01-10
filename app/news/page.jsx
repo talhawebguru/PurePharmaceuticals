@@ -25,7 +25,7 @@ const page = () => {
             </motion.h2>
             <div className="mt-10">
               <motion.div
-                className="border border-[#D9D9D9] py-5 px-4 flex gap-10"
+                className="border border-[#D9D9D9] py-5 px-4 flex flex-col sm:flex-row gap-10"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
