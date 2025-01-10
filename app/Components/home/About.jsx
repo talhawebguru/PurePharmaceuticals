@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const About = () => {
   return (
-    <div className="2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-0 flex flex-col lg:flex-row items-center 2xl:justify-between xl:px-[90px] lg:px-10 px-5 lg:mt-44 mt-14 gap-20">
+    <div className="2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-0 flex flex-col lg:flex-row items-center 2xl:justify-between xl:px-[90px] lg:px-10 px-5 lg:mt-44 mt-14 gap-20 overflow-x-hidden">
       <motion.div
         className="xl:w-[640px]"
         initial={{ opacity: 0, x: -50 }}

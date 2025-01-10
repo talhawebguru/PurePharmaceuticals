@@ -6,7 +6,7 @@ import HeroImg from "@/public/images/heroImg.svg";
 
 const Hero = () => {
   return (
-    <div className="md:bg-hero-pattern sm:bg-no-repeat sm:bg-cover sm:bg-center xs:bg-origin-content mt-7 2xl:px-0 xl:px-[90px] lg:px-10 px-5 xl:pt-[115px] lg::pt-20 sm:pt-10 xs:mt-0 xl:pb-44">
+    <div className="md:bg-hero-pattern sm:bg-no-repeat sm:bg-cover sm:bg-center xs:bg-origin-content mt-7 2xl:px-0 xl:px-[90px] lg:px-10 px-5 xl:pt-[115px] lg::pt-20 sm:pt-10 xs:mt-0 xl:pb-44 overflow-x-hidden">
       <motion.div
         className="md:hidden mt-0"
         initial={{ opacity: 0, y: -50 }}

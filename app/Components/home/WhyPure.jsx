@@ -13,7 +13,7 @@ const WhyPure = () => {
   };
 
   return (
-    <div className="xl:px-[90px] lg:px-10 px-5 bg-[#0b3931] ">
+    <div className="xl:px-[90px] lg:px-10 px-5 bg-[#0b3931] overflow-hidden">
       <div className="2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-0 flex flex-col lg:flex-row">
         <motion.div
           className="lg:mt-32 mt-12 lg:w-[50%]"
@@ -51,7 +51,7 @@ const WhyPure = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="border border-light-pink py-6 pl-9 pr-6"
+                className="border border-light-pink md:py-6 md:pl-9 md:pr-6 p-5"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}

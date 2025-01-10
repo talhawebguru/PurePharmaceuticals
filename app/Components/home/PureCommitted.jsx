@@ -84,7 +84,6 @@ const PureCommitted = () => {
           className="grid gap-5 lg:grid-cols-3 sm:grid-cols-2 mt-12"
           initial="hidden"
           whileInView="visible"
-          viewport={{amount: 0.5}}
           transition={{ duration: 0.9 }}
           variants={{
             hidden: { opacity: 0 },

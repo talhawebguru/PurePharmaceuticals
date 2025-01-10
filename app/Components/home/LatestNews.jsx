@@ -28,7 +28,7 @@ const newsData = [
 
 const NewsItem = ({ src, alt, title, description }) => (
   <motion.div
-    className="p-6 sm:w-[407px] xl:w-auto h-auto sm:h-[409px] bg-neutral-50 rounded-xl border border-black/10"
+    className="p-5 sm:p-6 w-auto sm:w-[407px] xl:w-auto h-auto sm:h-[409px] bg-neutral-50 rounded-xl border border-black/10"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay: 0.2 }}
