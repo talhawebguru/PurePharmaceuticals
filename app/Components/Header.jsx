@@ -175,8 +175,8 @@ const Header = () => {
                   className="relative"
                 >
                   <Link href="/product" className="flex items-center">
-                    Product
-                    <svg
+                    Products
+                    {/* <svg
                       className="h-5 w-5 ml-[7px]"
                       fill="none"
                       stroke="currentColor"
@@ -189,9 +189,9 @@ const Header = () => {
                         strokeWidth="2"
                         d="M19 9l-7 7-7-7"
                       />
-                    </svg>
+                    </svg> */}
                   </Link>
-                  {contactDropdown && (
+                  {/* {contactDropdown && (
                     <ul className="absolute w-[200px] left-0 pt-6 z-20  rounded shadow-lg">
                       <li
                         className={`flex items-center relative px-3 py-2 bg-white  hover:bg-primary hover:text-white`}
@@ -242,7 +242,7 @@ const Header = () => {
                         )}
                       </li>
                     </ul>
-                  )}
+                  )} */}
                 </li>
                 <li>
                   <Link
@@ -378,7 +378,7 @@ const Header = () => {
                   >
                     Products
                   </Link>
-                  <svg
+                  {/* <svg
                     onClick={() => toggleAccordion(1)}
                     className="h-5 w-5 ml-2"
                     fill="none"
@@ -392,9 +392,9 @@ const Header = () => {
                       strokeWidth="2"
                       d="M19 9l-7 7-7-7"
                     />
-                  </svg>
+                  </svg> */}
                 </div>
-                {activeIndex === 1 && (
+                {/* {activeIndex === 1 && (
                   <div className="w-full">
                     <ul className="  ">
                       <div className="w-full h-[0px] opacity-40  border-2 mt-2 border-[#0000004D] "></div>
@@ -442,7 +442,7 @@ const Header = () => {
                       </li>
                     </ul>
                   </div>
-                )}
+                )} */}
               </li>
               <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
 
