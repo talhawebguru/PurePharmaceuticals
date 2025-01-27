@@ -4,6 +4,7 @@ import Image from "next/image";
 import ArrowDown from "@/public/images/arrowDown.svg";
 import CategoryList from "./CategoryList";
 import ProductData from "./ProductData";
+import ProductDataNew from "./ProductDataNew";
 
 const ProductComplete = () => {
 
@@ -38,8 +39,9 @@ const ProductComplete = () => {
           </div>
         </div>
         <div className="xl:w-[70%] md:w-[74%] w-full">
-          <ProductData gridSizeL={3} gridSizeM={2} gridSizeS={2} limit={12}  selectedCategory={selectedCategory}/>
-          <div className="flex gap-2 justify-center lg:mt-16 mt-5 lg:mb-20 mb-5 ">
+          {/* <ProductData gridSizeL={3} gridSizeM={2} gridSizeS={2} limit={12}  selectedCategory={selectedCategory}/> */}
+          <ProductDataNew selectedCategory={selectedCategory} />
+          {/* <div className="flex gap-2 justify-center lg:mt-16 mt-5 lg:mb-20 mb-5 ">
             <div className="w-10 h-10 bg-white shadow flex justify-center items-center rotate-90">
               <Image src={ArrowDown} alt="Arrow Down" />
             </div>
@@ -58,7 +60,7 @@ const ProductComplete = () => {
             <div className="w-10 h-10 bg-white shadow flex justify-center items-center -rotate-90">
               <Image src={ArrowDown} alt="Arrow Down" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

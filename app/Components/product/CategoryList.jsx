@@ -1,36 +1,9 @@
 "use client"
 import React from "react";
+import categoryList from "@/data/CategoryList";
+
 
 const CategoryList = ({ onCategorySelect, selectedCategory  }) => {
-  const categoryList = [
-    {
-      name: "All Products",
-    },
-    {
-      name: "Antihypertensives",
-    },
-    {
-      name: "Antihistamines",
-    },
-    {
-      name: "Erectile Dysfunction",
-    },
-    {
-      name: "Lipid Lowering Agents",
-    },
-    {
-      name: "Antibiotics",
-    },
-    {
-      name: "Analgesics",
-    },
-    {
-      name: "Anti-Emetics",
-    },
-    {
-      name: "Antiplatelets",
-    },
-  ];
   return (
     <>
       <div className="pb-4 lg:pb-0">
