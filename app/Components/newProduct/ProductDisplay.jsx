@@ -1,0 +1,119 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import ProductImage from "@/public/images/productImage.png";
+import { LuDownload } from "react-icons/lu";
+import { getProductBySlug } from "@/app/services/api";
+import { useParams } from "next/navigation";
+import RichTextRenderer from "./RichTextRenderer";
+
+const ProductDisplay = () => {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const params = useParams();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await getProductBySlug(params.productSlug);
+        if (response.data && response.data.length > 0) {
+          setProduct(response.data[0]);
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setLoading(false);
+      }
+    };
+
+    if (params.productSlug) {
+      fetchProduct();
+    }
+  }, [params.productSlug]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#179f8e]"></div>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className="flex justify-center items-center min-h-[400px]">
+        <p className="text-gray-500">Product not found.</p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className="xl:mx-[90px] lg:mx-[40px] mx-5 2xl:max-w-[1440px] 2xl:mx-auto mt-12 xl:px-20 lg:px-10 sm:px-5 px-2.5">
+        <div className="grid grid-cols-12 gap-5">
+          <div className="flex flex-col gap-5 xl:col-span-8 md:col-span-6 col-span-12">
+            <h1 className="text-[#18130f] text-[32px] font-normal font-arial leading-[38.40px]">
+              {product.name}
+            </h1>
+
+            <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+              Generic Name:
+            </h3>
+            <h2 className="text-[#18130f] text-lg font-normal font-arial leading-snug">
+              {product.name}
+            </h2>
+
+            <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+              Therapeutic Segment:
+            </h3>
+            <h2 className="text-[#18130f] text-lg font-normal font-arial leading-snug">
+              {product.therapeutic_segments?.[0]?.name}
+            </h2>
+
+            <div>
+              <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+                Description:
+              </h3>
+              <div className="text-[#18130f] mt-3 text-base font-normal font-arial leading-normal">
+                <RichTextRenderer content={product.description} />
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-5 justify-end items-end xl:col-span-4 md:col-span-6 col-span-12">
+            {product?.resource_url && (
+              <div className="w-[129px] h-[38px] bg-[#f4f4f4] rounded justify-center items-center gap-3 flex cursor-pointer">
+                <LuDownload />
+                <div className="text-black text-base font-semibold font-['Open Sans'] capitalize">
+                  Resource
+                </div>
+              </div>
+            )}
+            <Image
+              src={product.image?.url || ProductImage}
+              alt={product.name}
+              className="w-[470px] h-[220px]"
+              width={470}
+              height={220}
+            />
+          </div>
+        </div>
+        <div className="mt-5">
+          <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+            Indications:
+          </h3>
+          <div className="text-[#18130f] mt-3 text-base font-normal font-arial leading-normal">
+            <RichTextRenderer content={product.indications} />
+          </div>
+          <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+            Presentation:
+          </h3>
+          <div className="text-[#18130f] mt-3 text-base font-normal font-arial leading-normal">
+            <RichTextRenderer content={product.Presentation} />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default ProductDisplay;

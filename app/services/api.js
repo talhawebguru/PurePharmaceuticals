@@ -30,4 +30,24 @@ export const getCategories = async () => {
   }
 };
 
+export const getProductsByCategory = async (categorySlug) => {
+  try {
+    const response = await api.get(`/api/products?populate=*&filters[categories][slug][$eq]=${categorySlug}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching products by category:', error);
+    throw error;
+  }
+};
+
+export const getProductBySlug = async (productSlug) => {
+  try {
+    const response = await api.get(`/api/products?populate=*&filters[slug][$eq]=${productSlug}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    throw error;
+  }
+};
+
 export default api;
