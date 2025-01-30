@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getCategories } from "@/app/services/api";
 import { motion } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 
 const CategoryCard = () => {
   const [categories, setCategories] = useState([]);
@@ -66,8 +67,18 @@ const CategoryCard = () => {
               boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
               transition: { duration: 0.2 },
             }}
-            className="w-full h-[213px] bg-[#179f8e]/5 rounded-[20px] flex items-center justify-center cursor-pointer"
+            className="w-full h-[213px] bg-[#179f8e]/5 rounded-[20px] flex flex-col items-center justify-center cursor-pointer gap-5"
           >
+            <div className="flex justify-center items-center">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_API_URL}${category.categoryicon.url}`}
+                alt={category.name}
+                className=" "
+                width={65}
+                height={65}
+              />
+            </div>
+
             <h2 className="text-[#18130f] text-2xl font-normal font-arial leading-[28.80px] text-center px-5">
               {category.name}
             </h2>

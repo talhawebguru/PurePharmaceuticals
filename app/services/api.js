@@ -22,7 +22,7 @@ export const getProducts = async () => {
 // Function to get categories
 export const getCategories = async () => {
   try {
-    const response = await api.get('/api/categories');
+    const response = await api.get('/api/categories?populate=*');
     return response.data;
   } catch (error) {
     console.error('Error fetching categories:', error);

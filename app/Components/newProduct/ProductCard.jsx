@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getProductsByCategory } from "@/app/services/api";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
