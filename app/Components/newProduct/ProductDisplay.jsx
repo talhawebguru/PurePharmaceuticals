@@ -6,6 +6,10 @@ import { LuDownload } from "react-icons/lu";
 import { getProductBySlug } from "@/app/services/api";
 import { useParams } from "next/navigation";
 import RichTextRenderer from "./RichTextRenderer";
+import { motion } from "motion/react";
+import { TbInfoTriangleFilled } from "react-icons/tb";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ProductDisplay = () => {
   const [product, setProduct] = useState(null);
@@ -33,8 +37,21 @@ const ProductDisplay = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#179f8e]"></div>
+      <div className="xl:mx-[90px] lg:mx-[40px] mx-5 2xl:max-w-[1440px] 2xl:mx-auto mt-12 xl:px-20 lg:px-10 sm:px-5 px-2.5">
+        <div className="grid grid-cols-12 gap-5">
+          <div className="flex flex-col gap-5 xl:col-span-8 md:col-span-6 col-span-12">
+            <Skeleton height={40} width={300} />
+            <Skeleton height={20} width={150} />
+            <Skeleton height={20} width={200} />
+            <Skeleton height={20} width={150} />
+            <Skeleton height={20} width={200} />
+            <Skeleton height={100} width={500} />
+          </div>
+          <div className="flex flex-col gap-5 justify-end items-end xl:col-span-4 md:col-span-6 col-span-12">
+            <Skeleton height={38} width={129} />
+            <Skeleton height={220} width={470} />
+          </div>
+        </div>
       </div>
     );
   }
@@ -49,7 +66,12 @@ const ProductDisplay = () => {
 
   return (
     <>
-      <div className="xl:mx-[90px] lg:mx-[40px] mx-5 2xl:max-w-[1440px] 2xl:mx-auto mt-12 xl:px-20 lg:px-10 sm:px-5 px-2.5">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="xl:mx-[90px] lg:mx-[40px] mx-5 2xl:max-w-[1440px] 2xl:mx-auto mt-12 xl:px-20 lg:px-10 sm:px-5 px-2.5"
+      >
         <div className="grid grid-cols-12 gap-5">
           <div className="flex flex-col gap-5 xl:col-span-8 md:col-span-6 col-span-12">
             <h1 className="text-[#18130f] text-[32px] font-normal font-arial leading-[38.40px]">
@@ -111,7 +133,17 @@ const ProductDisplay = () => {
             <RichTextRenderer content={product.Presentation} />
           </div>
         </div>
-      </div>
+        <div className="w-fit h-fit bg-[#f1f1f1] rounded-md flex items-center gap-4 p-5 mt-10 ">
+          <div>
+            <TbInfoTriangleFilled  size={20}/>
+          </div>
+          <div>
+            <p className="text-[#18130f] text-base font-normal font-arial">
+              {product.note.note}
+            </p>
+          </div>
+        </div>
+      </motion.div>
     </>
   );
 };
