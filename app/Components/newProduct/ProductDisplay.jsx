@@ -78,24 +78,24 @@ const ProductDisplay = () => {
               {product.name}
             </h1>
 
-            <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+            <h2 className="text-[#005948] text-base font-normal font-arial leading-tight">
               Generic Name:
-            </h3>
-            <h2 className="text-[#18130f] text-lg font-normal font-arial leading-snug">
+            </h2>
+            <p className="text-[#18130f] text-lg font-normal font-arial leading-snug">
               {product.name}
-            </h2>
+            </p>
 
-            <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+            <h2 className="text-[#005948] text-base font-normal font-arial leading-tight">
               Therapeutic Segment:
-            </h3>
-            <h2 className="text-[#18130f] text-lg font-normal font-arial leading-snug">
-              {product.therapeutic_segments?.[0]?.name}
             </h2>
+            <p className="text-[#18130f] text-lg font-normal font-arial leading-snug">
+              {product.therapeutic_segments?.[0]?.name}
+            </p>
 
             <div>
-              <h3 className="text-[#005948] text-base font-normal font-arial leading-tight">
+              <h2 className="text-[#005948] text-base font-normal font-arial leading-tight">
                 Description:
-              </h3>
+              </h2>
               <div className="text-[#18130f] mt-3 text-base font-normal font-arial leading-normal">
                 <RichTextRenderer content={product.description} />
               </div>
@@ -135,7 +135,7 @@ const ProductDisplay = () => {
         </div>
         <div className="w-fit h-fit bg-[#f1f1f1] rounded-md flex items-center gap-4 p-5 mt-10 ">
           <div>
-            <TbInfoTriangleFilled  size={20}/>
+            <TbInfoTriangleFilled size={20} />
           </div>
           <div>
             <p className="text-[#18130f] text-base font-normal font-arial">
