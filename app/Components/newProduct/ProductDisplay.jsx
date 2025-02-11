@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import ProductImage from "@/public/images/productImage.png";
+import ProductImage from "@/public/images/img-placeholder.webp";
 import { LuDownload } from "react-icons/lu";
 import { getProductBySlug } from "@/app/services/api";
 import { useParams } from "next/navigation";
