@@ -7,9 +7,6 @@ const api = axios.create({
     'Content-Type': 'application/json',
     'ngrok-skip-browser-warning': 'true'
   },
-   // headers: {
-  //   'ngrok-skip-browser-warning': 'true'
-  // }
 });
 
 // Function to get products
