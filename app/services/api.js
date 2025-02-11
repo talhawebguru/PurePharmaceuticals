@@ -5,7 +5,11 @@ const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL, 
   headers: {
     'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true'
   },
+   // headers: {
+  //   'ngrok-skip-browser-warning': 'true'
+  // }
 });
 
 // Function to get products

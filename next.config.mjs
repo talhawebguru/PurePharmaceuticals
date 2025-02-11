@@ -4,9 +4,9 @@ const nextConfig = {
       loader: 'default',
       remotePatterns: [
         {
-          protocol: 'http',
-          hostname: 'http://localhost:1337',
-          port: '1337',
+          protocol: 'https',
+          hostname: '7f35-2-50-150-167.ngrok-free.app',
+          port: '',
           pathname: '/**',
         },
         {
