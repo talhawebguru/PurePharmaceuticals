@@ -77,7 +77,7 @@ const page = () => {
           At Pure Pharma , we focus on balancing state-of-the-art medicinal
           science with clinically effective, compassionate care. Through
           strategic partnerships with a range of companies across the globe,
-          Highnoon continues to discover and market therapies for the future
+          Pure Pharma continues to discover and market therapies for the future
           advancement of healthcare.
           <br />
           <br />
