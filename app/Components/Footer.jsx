@@ -30,7 +30,7 @@ const Footer = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: false }}
           >
-            <h2 className="text-black text-2xl font-normal font-arial leading-9">About Us</h2>
+            <h2 className="text-black text-2xl font-normal font-arial leading-9">Quick Links</h2>
             <div>
               <ul className='flex flex-col gap-3 mt-3 text-black text-base font-normal font-secondary leading-normal"'>
                 <li><Link href='/'>Home</Link></li>

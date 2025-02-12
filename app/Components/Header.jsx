@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Logo from "@/public/images/logo.svg";
 import MenuOpen from "@/public/images/menuOpen.svg";
 import MenuClose from "@/public/images/menuClose.svg";
@@ -18,8 +18,6 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [aboutDropdown, setAboutDropdown] = useState(false);
-  const [contactDropdown, setContactDropdown] = useState(false);
-  const [areaDropdown, setAreaDropdown] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [categories, setCategories] = useState([]);
@@ -64,22 +62,6 @@ const Header = () => {
 
   const handleAboutLeave = () => {
     setAboutDropdown(false);
-  };
-
-  const handleContactHover = () => {
-    setContactDropdown(true);
-  };
-
-  const handleContactLeave = () => {
-    setContactDropdown(false);
-  };
-
-  const handleAreaHover = () => {
-    setAreaDropdown(true);
-  };
-
-  const handleAreaLeave = () => {
-    setAreaDropdown(false);
   };
 
   const handleMegaMenuHover = () => {
@@ -219,18 +201,18 @@ const Header = () => {
                     </svg>
                   </Link>
                   {megaMenuOpen && (
-                    <div className="flex bg-white shadow-lg rounded-lg overflow-hidden w-[1000px] mx-auto absolute left-[-400%] top-6">
-                      <div className="w-1/4 bg-gray-100 p-6 flex items-center justify-center">
+                    <div className="flex bg-white shadow-lg rounded-lg overflow-hidden w-[1000px] mx-auto absolute left-[-480%] xl:left-[-400%] top-6 z-50">
+                      <div className="w-1/4 bg-[#179f8e]/5 p-6 flex items-center justify-center">
                         <h2 className="text-3xl font-bold">
-                          <span className="text-gray-700">Our</span>{" "}
-                          <span className="text-pgreen">Products</span>
+                          <span className="text-gray-700">Our </span>
+                          <span className="text-[#179f8e]">Products</span>
                         </h2>
                       </div>
                       <div className="w-1/2 grid grid-cols-2 gap-4 p-6">
                         {categories.map((category, index) => (
                           <p
                             key={index}
-                            className="cursor-pointer hover:text-green-600 transition"
+                            className="cursor-pointer hover:text-[#179f8e] transition"
                             onMouseEnter={() =>
                               setSelectedImage(category.categoryicon.url)
                             }
