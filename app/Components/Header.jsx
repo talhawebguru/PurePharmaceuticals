@@ -96,8 +96,6 @@ const Header = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  
-
   return (
     <>
       <div className={`pt-[20px] xl:px-[90px] lg:px-[40px] px-5 `}>
@@ -232,13 +230,14 @@ const Header = () => {
                         {categories.map((category, index) => (
                           <p
                             key={index}
-                            className="cursor-pointer hover:text-lime-900 transition"
+                            className="cursor-pointer hover:text-green-600 transition"
                             onMouseEnter={() =>
                               setSelectedImage(category.categoryicon.url)
                             }
                           >
-                            {category.name}
-                            {console.log(category.categoryicon.url)}
+                            <Link href={`/product/${category.slug}`}>
+                              {category.name}
+                            </Link>
                           </p>
                         ))}
                       </div>
@@ -247,7 +246,7 @@ const Header = () => {
                           key={selectedImage}
                           src={`${process.env.NEXT_PUBLIC_API_URL}${selectedImage}`}
                           alt="Category"
-                          className="w-24 h-24 object-contain"
+                          className="w-24 h-36 object-contain"
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3 }}
