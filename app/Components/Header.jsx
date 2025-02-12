@@ -1,18 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import * as motion from "motion/react-client"
+import { motion } from "framer-motion";
 import Logo from "@/public/images/logo.svg";
 import MenuOpen from "@/public/images/menuOpen.svg";
 import MenuClose from "@/public/images/menuClose.svg";
 import RightArrow from "@/public/images/rightArrowGreen.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import { FaYoutube } from "react-icons/fa";
 import SocialIcons from "./SocialIcons";
+import { getCategories } from "@/app/services/api";
 
 const Header = () => {
   const pathname = usePathname();
@@ -22,6 +21,26 @@ const Header = () => {
   const [contactDropdown, setContactDropdown] = useState(false);
   const [areaDropdown, setAreaDropdown] = useState(false);
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await getCategories();
+        setCategories(response.data);
+        console.log(response.data);
+        if (response.data.length > 0) {
+          setSelectedImage(response.data[0].categoryicon.url);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const toggleMenu = () => {
     if (isOpen) {
@@ -63,11 +82,21 @@ const Header = () => {
     setAreaDropdown(false);
   };
 
+  const handleMegaMenuHover = () => {
+    setMegaMenuOpen(true);
+  };
+
+  const handleMegaMenuLeave = () => {
+    setMegaMenuOpen(false);
+  };
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+  
 
   return (
     <>
@@ -170,13 +199,13 @@ const Header = () => {
                   )}
                 </li>
                 <li
-                  onMouseEnter={handleContactHover}
-                  onMouseLeave={handleContactLeave}
+                  onMouseEnter={handleMegaMenuHover}
+                  onMouseLeave={handleMegaMenuLeave}
                   className="relative"
                 >
                   <Link href="/product" className="flex items-center">
                     Products
-                    {/* <svg
+                    <svg
                       className="h-5 w-5 ml-[7px]"
                       fill="none"
                       stroke="currentColor"
@@ -189,60 +218,43 @@ const Header = () => {
                         strokeWidth="2"
                         d="M19 9l-7 7-7-7"
                       />
-                    </svg> */}
+                    </svg>
                   </Link>
-                  {/* {contactDropdown && (
-                    <ul className="absolute w-[200px] left-0 pt-6 z-20  rounded shadow-lg">
-                      <li
-                        className={`flex items-center relative px-3 py-2 bg-white  hover:bg-primary hover:text-white`}
-                        onMouseEnter={handleAreaHover}
-                        onMouseLeave={handleAreaLeave}
-                      >
-                        Oral Solid Dosage
-                        <svg
-                          className="h-5 w-5 ml-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                        {areaDropdown && (
-                          <ul
-                            className={`absolute left-full -top-2 mt-2 rounded lg:w-[200px] shadow-lg text-black bg-white`}
+                  {megaMenuOpen && (
+                    <div className="flex bg-white shadow-lg rounded-lg overflow-hidden w-[1000px] mx-auto absolute left-[-400%] top-6">
+                      <div className="w-1/4 bg-gray-100 p-6 flex items-center justify-center">
+                        <h2 className="text-3xl font-bold">
+                          <span className="text-gray-700">Our</span>{" "}
+                          <span className="text-pgreen">Products</span>
+                        </h2>
+                      </div>
+                      <div className="w-1/2 grid grid-cols-2 gap-4 p-6">
+                        {categories.map((category, index) => (
+                          <p
+                            key={index}
+                            className="cursor-pointer hover:text-lime-900 transition"
+                            onMouseEnter={() =>
+                              setSelectedImage(category.categoryicon.url)
+                            }
                           >
-                            <li className="px-3 py-2 hover:bg-primary hover:text-white">
-                              Antihypertensives
-                            </li>
-                            <li className="px-3 py-2 hover:bg-primary hover:text-white">
-                              Antihistamines
-                            </li>
-                            <li className="px-3 py-2 hover:bg-primary hover:text-white">
-                              Erectile Dysfunction
-                            </li>
-                            <li className="px-3 py-2 hover:bg-primary hover:text-white">
-                              Lipid Lowering Agents
-                            </li>
-                            <li className="px-3 py-2 hover:bg-primary hover:text-white">
-                              Antibiotics
-                            </li>
-                            <li className="px-3 py-2 hover:bg-primary hover:text-white">
-                              Analgesics
-                            </li>
-                            <li className="px-3 py-2 hover:bg-primary hover:text-white">
-                              Anti-Emetics
-                            </li>
-                          </ul>
-                        )}
-                      </li>
-                    </ul>
-                  )} */}
+                            {category.name}
+                            {console.log(category.categoryicon.url)}
+                          </p>
+                        ))}
+                      </div>
+                      <div className="w-1/4 flex items-center justify-center p-6">
+                        <motion.img
+                          key={selectedImage}
+                          src={`${process.env.NEXT_PUBLIC_API_URL}${selectedImage}`}
+                          alt="Category"
+                          className="w-24 h-24 object-contain"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      </div>
+                    </div>
+                  )}
                 </li>
                 <li>
                   <Link
@@ -378,71 +390,7 @@ const Header = () => {
                   >
                     Products
                   </Link>
-                  {/* <svg
-                    onClick={() => toggleAccordion(1)}
-                    className="h-5 w-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg> */}
                 </div>
-                {/* {activeIndex === 1 && (
-                  <div className="w-full">
-                    <ul className="  ">
-                      <div className="w-full h-[0px] opacity-40  border-2 mt-2 border-[#0000004D] "></div>
-
-                      <li
-                        className={`flex flex-col items-center justify-center  px-3 py-2 $`}
-                        onMouseEnter={handleAreaHover}
-                        onMouseLeave={handleAreaLeave}
-                      >
-                        <div className="flex justify-center items-center">
-                          Oral Solid Dosage
-                          <svg
-                            className="h-5 w-5 ml-2"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </div>
-                        {areaDropdown && (
-                          <ul
-                            className={` mt-2 flex flex-col items-center justify-center  text-black `}
-                          >
-                            <li className="px-3 py-2" onClick={handleLinkClick}>
-                              Antihypertensives
-                            </li>
-                            <li className="px-3 py-2" onClick={handleLinkClick}>
-                              Antihistamines
-                            </li>
-                            <li className="px-3 py-2" onClick={handleLinkClick}>
-                              Erectile Dysfunction
-                            </li>
-                            <li className="px-3 py-2" onClick={handleLinkClick}>
-                              Lipid Lowering Agents
-                            </li>
-                          </ul>
-                        )}
-                      </li>
-                    </ul>
-                  </div>
-                )} */}
               </li>
               <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
 
