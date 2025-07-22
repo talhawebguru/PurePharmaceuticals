@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import * as motion from "motion/react-client"
 import Product1 from "@/public/images/committed1.svg";
@@ -11,91 +11,79 @@ import Product6 from "@/public/images/committed6.svg";
 const commitmentData = [
   {
     src: Product1,
-    alt: "Products",
+    alt: "Manufacturing Excellence",
     title: "To Manufacture",
     description: "World Class Pharma Formulations",
   },
   {
     src: Product2,
-    alt: "Products",
+    alt: "Customer Satisfaction",
     title: "To Satisfy",
     description: "Need And Expectations Of Customers",
   },
   {
     src: Product3,
-    alt: "Products",
+    alt: "Employee Engagement",
     title: "To Ensure",
     description: "Employee Involvement",
   },
   {
     src: Product4,
-    alt: "Products",
+    alt: "Quality Assurance",
     title: "To Build",
     description: "Quality At Each And Every Level",
   },
   {
     src: Product5,
-    alt: "Products",
+    alt: "Safety Standards",
     title: "To Assure",
     description: "Commitment To Safety",
   },
   {
     src: Product6,
-    alt: "Products",
+    alt: "Continuous Innovation",
     title: "To Invest In",
     description: "Continuous Improvement",
   },
 ];
 
-const CommitmentItem = ({ src, alt, title, description }) => (
+const CommitmentItem = memo(({ src, alt, title, description, index }) => (
   <motion.div
-    className="bg-white flex flex-col justify-center items-center min-w-[30%] h-[330px]"
+    className="bg-white flex flex-col justify-center items-center min-w-[30%] h-[330px] rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+    viewport={{ once: true }}
+    whileHover={{ y: -5 }}
   >
-    <div className="w-[97px] h-[97px] bg-[#ecf8f2] rounded-full flex justify-center items-center ">
-      <Image src={src} alt={alt} className="" width={40} height={40} />
+    <div className="w-[97px] h-[97px] bg-[#ecf8f2] rounded-full flex justify-center items-center">
+      <Image src={src} alt={alt} width={40} height={40} loading="lazy" />
     </div>
-    <h2 className="text-[#0a362f] text-2xl font-normal font-arial leading-relaxed mt-10">
+    <h3 className="text-[#0a362f] text-2xl font-normal font-arial leading-relaxed mt-10">
       {title}
-    </h2>
-    <p className="mt-4 text-[#0b372f] text-base font-normal font-['Inter'] leading-[16.86px]">
+    </h3>
+    <p className="mt-4 text-[#0b372f] text-base font-normal font-['Inter'] leading-[16.86px] text-center px-4">
       {description}
     </p>
   </motion.div>
-);
+));
 
+CommitmentItem.displayName = 'CommitmentItem';
 
-
-const PureCommitted = () => {
+const PureCommitted = memo(() => {
   return (
-    <div className="xl:px-[90px] lg:px-10 px-5 lg:mt-40 mt-14 2xl:px-0 bg-light-pink">
+    <section className="xl:px-[90px] lg:px-10 px-5 lg:mt-40 mt-14 2xl:px-0 bg-light-pink">
       <motion.h2
         className="text-primary text-2xl md:text-[42px] pt-28 2xl:max-w-[1440px] 2xl:mx-auto font-normal font-arial leading-[44.25px] text-center"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
       >
         Purepharma Committed
       </motion.h2>
       <div className="2xl:max-w-[1440px] 2xl:mx-auto pb-40">
-        <motion.div
-          className="grid gap-5 lg:grid-cols-3 sm:grid-cols-2 mt-12"
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.9 }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transitionDuration: 0.8,
-              transition: {
-                staggerChildren: 0.5,
-              },
-            },
-          }}
-        >
+        <div className="grid gap-5 lg:grid-cols-3 sm:grid-cols-2 mt-12">
           {commitmentData.map((item, index) => (
             <CommitmentItem
               key={index}
@@ -103,12 +91,15 @@ const PureCommitted = () => {
               alt={item.alt}
               title={item.title}
               description={item.description}
+              index={index}
             />
           ))}
-        </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
-};
+});
+
+PureCommitted.displayName = 'PureCommitted';
 
 export default PureCommitted;

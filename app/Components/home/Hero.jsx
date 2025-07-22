@@ -13,7 +13,14 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <Image src={HeroImg} alt="Company Img" className="w-full" />
+        <Image 
+          src={HeroImg} 
+          alt="Pure Pharmaceuticals - High-quality pharmaceutical products" 
+          className="w-full" 
+          priority
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyLli2k3RGiAdHzEd+MyFWzYfEQR1AAbE+U25E..."
+        />
       </motion.div>
       <div className="flex flex-col md:flex-row 2xl:max-w-[1440px] 2xl:mx-auto  mt-4 md:mt-0">
         <motion.div
@@ -22,9 +29,9 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-[#0b3931] xl:text-[52px] text-5xl xs:text-4xl font-normal font-arial leading-[54.79px] xl:mt-7">
+          <h1 className="text-[#0b3931] xl:text-[52px] text-5xl xs:text-4xl font-normal font-arial leading-[54.79px] xl:mt-7">
             Welcome to <br className="hidden xl:block" /> Pure Pharmaceuticals
-          </h2>
+          </h1>
           <p className="text-[#2f2f2f] text-base font-normal font-secondary leading-normal mt-5 xl:w-[78%] lg:w-[80%]">
             Welcome to Pure Pharmaceuticals, your trusted source for
             high-quality pharmaceutical products in Kizad, Abu Dhabi. We are
@@ -35,11 +42,12 @@ const Hero = () => {
             us for effective solutions.
           </p>
           <motion.button
-            className="flex gap-3 items-center mt-14 bg-[#0e493f] py-4 px-6 text-white text-base font-normal font-arial leading-[16.86px] mb-8"
+            className="flex gap-3 items-center mt-14 bg-[#0e493f] py-4 px-6 text-white text-base font-normal font-arial leading-[16.86px] mb-8 hover:bg-[#0d4439] transition-colors duration-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Get started with Pure Pharmaceuticals"
           >
-            Get Start <Image src={RightArrow} alt="Arrow" />
+            Get Started <Image src={RightArrow} alt="" width={16} height={16} />
           </motion.button>
         </motion.div>
       </div>

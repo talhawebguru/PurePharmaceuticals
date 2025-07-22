@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import Vertical1 from "@/public/images/binAli.svg";
 import Vertical2 from "@/public/images/safeGreen.svg";
@@ -11,63 +11,45 @@ import Vertical7 from "@/public/images/jurhy.svg";
 import Marquee from "react-fast-marquee";
 import * as motion from "motion/react-client"
 
+const verticalLogos = [
+  { src: Vertical1, alt: "Bin Ali - Healthcare Partner" },
+  { src: Vertical2, alt: "Safe Green - Medical Solutions" },
+  { src: Vertical3, alt: "Safe Blue - Pharmaceutical Services" },
+  { src: Vertical4, alt: "Safe Ex - Healthcare Excellence" },
+  { src: Vertical5, alt: "Care Medical - Patient Care" },
+  { src: Vertical6, alt: "AJ Drugs - Pharmaceutical Distribution" },
+  { src: Vertical7, alt: "Jurhy - Medical Technology" },
+];
 
-const Verticals = () => {
+const Verticals = memo(() => {
   return (
-    <>
-      <div className="mt-24 px-14 xs:px-5 2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-0 mb-40">
-        <motion.h2 
+    <section className="mt-24 px-14 xs:px-5 2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-0 mb-40">
+      <motion.h2 
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{once: true}}
-        className="text-primary text-2xl md:text-[42px] font-normal font-arial leading-[44.25px] text-center">
-          Our Verticals
-        </motion.h2>
-        <div className="mt-14">
-          <div >
-            <Marquee autoFill className="">
-              <Image
-                src={Vertical1}
-                alt="COMPANY name"
-                className="grayscale hover:grayscale-0 ml-16"
-              />
-              <Image
-                src={Vertical2}
-                alt="COMPANY name"
-                className="grayscale hover:grayscale-0 ml-16"
-              />
-              <Image
-                src={Vertical3}
-                alt="COMPANY name"
-                className="grayscale hover:grayscale-0 ml-16"
-              />
-              <Image
-                src={Vertical4}
-                alt="COMPANY name"
-                className="grayscale hover:grayscale-0 ml-16"
-              />
-              <Image
-                src={Vertical5}
-                alt="COMPANY name"
-                className="grayscale hover:grayscale-0 ml-16"
-              />
-              <Image
-                src={Vertical6}
-                alt="COMPANY name"
-                className="grayscale hover:grayscale-0 ml-16"
-              />
-              <Image
-                src={Vertical7}
-                alt="COMPANY name"
-                className="grayscale hover:grayscale-0 ml-16"
-              />
-            </Marquee>
-          </div>
-        </div>
+        className="text-primary text-2xl md:text-[42px] font-normal font-arial leading-[44.25px] text-center"
+      >
+        Our Verticals
+      </motion.h2>
+      <div className="mt-14">
+        <Marquee autoFill className="" speed={30} pauseOnHover={true}>
+          {verticalLogos.map((logo, index) => (
+            <Image
+              key={index}
+              src={logo.src}
+              alt={logo.alt}
+              className="grayscale hover:grayscale-0 ml-16 transition-all duration-300"
+              loading="lazy"
+            />
+          ))}
+        </Marquee>
       </div>
-    </>
+    </section>
   );
-};
+});
+
+Verticals.displayName = 'Verticals';
 
 export default Verticals;

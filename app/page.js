@@ -1,11 +1,27 @@
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Hero from "./Components/home/Hero";
-import Verticals from "./Components/home/Verticals";
-import About from "./Components/home/About";
-import Partners from "./Components/home/Partners";
-import WhyPure from "./Components/home/WhyPure";
-import PureCommitted from "./Components/home/PureCommitted";
-import LatestNews from "./Components/home/LatestNews";
 import { getHomeMetadata } from "./services/api";
+
+// Lazy load components that are below the fold
+const Verticals = dynamic(() => import("./Components/home/Verticals"), {
+  loading: () => <div className="h-48 animate-pulse bg-gray-200" />
+});
+const About = dynamic(() => import("./Components/home/About"), {
+  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+});
+const PureCommitted = dynamic(() => import("./Components/home/PureCommitted"), {
+  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+});
+const WhyPure = dynamic(() => import("./Components/home/WhyPure"), {
+  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+});
+const Partners = dynamic(() => import("./Components/home/Partners"), {
+  loading: () => <div className="h-64 animate-pulse bg-gray-200" />
+});
+const LatestNews = dynamic(() => import("./Components/home/LatestNews"), {
+  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+});
 
 export async function generateMetadata() {
   const metadata = await getHomeMetadata();
@@ -62,12 +78,24 @@ export default function Home() {
     <>
       <main>
         <Hero />
-        <Verticals />
-        <About />
-        <PureCommitted />
-        <WhyPure />
-        <Partners />
-        <LatestNews />
+        <Suspense fallback={<div className="h-48 animate-pulse bg-gray-200" />}>
+          <Verticals />
+        </Suspense>
+        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+          <About />
+        </Suspense>
+        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+          <PureCommitted />
+        </Suspense>
+        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+          <WhyPure />
+        </Suspense>
+        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-200" />}>
+          <Partners />
+        </Suspense>
+        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+          <LatestNews />
+        </Suspense>
       </main>
     </>
   );
