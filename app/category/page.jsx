@@ -23,7 +23,7 @@ export async function generateMetadata() {
   const keywords = metaData?.metaKeywords;
   const ogImage = metaData?.ogImage?.url ;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;
-  const canonicalUrl = `https://thepurepharma.com/product`;
+  const canonicalUrl = `https://thepurepharma.com/category`;
   let metaRobots = "index, follow";
 
   return {

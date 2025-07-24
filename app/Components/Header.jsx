@@ -183,7 +183,7 @@ const Header = () => {
                   onMouseLeave={handleMegaMenuLeave}
                   className="relative"
                 >
-                  <Link href="/product" className="flex items-center">
+                  <Link href="/category" className="flex items-center">
                     Products
                     <svg
                       className="h-5 w-5 ml-[7px]"
@@ -217,7 +217,7 @@ const Header = () => {
                               setSelectedImage(category.categoryicon.url)
                             }
                           >
-                            <Link href={`/product/${category.slug}`}>
+                            <Link href={`/category/${category.slug}`}>
                               {category.name}
                             </Link>
                           </p>

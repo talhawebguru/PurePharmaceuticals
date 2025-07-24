@@ -70,7 +70,7 @@ const CategoryCard = () => {
             </div>
           ))
         : categories.map((category) => (
-            <Link href={`/product/${category.slug}`} key={category.id}>
+            <Link href={`/category/${category.slug}`} key={category.id}>
               <motion.div
                 key={category.id}
                 variants={cardVariants}
