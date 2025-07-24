@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Logo from "@/public/images/logo.svg";
 import MenuOpen from "@/public/images/menuOpen.svg";
 import MenuClose from "@/public/images/menuClose.svg";
@@ -18,7 +18,6 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [aboutDropdown, setAboutDropdown] = useState(false);
-  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [categories, setCategories] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
@@ -41,19 +40,11 @@ const Header = () => {
   }, []);
 
   const toggleMenu = () => {
-    if (isOpen) {
-      setIsAnimatingOut(true); // Start the closing animation
-      setTimeout(() => {
-        setIsAnimatingOut(false);
-        setIsOpen(false); // Close the menu after the animation completes
-      }, 400); // Duration of the moveOut animation (in milliseconds)
-    } else {
-      setIsOpen(true); // Open the menu
-    }
+    setIsOpen(!isOpen);
   };
 
   const handleLinkClick = () => {
-    toggleMenu();
+    setIsOpen(false);
   };
 
   const handleAboutHover = () => {
@@ -76,6 +67,26 @@ const Header = () => {
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  // Animation variants for mobile menu
+  const mobileMenuVariants = {
+    hidden: { x: "-100%", opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+    exit: {
+      x: "-100%",
+      opacity: 0,
+      transition: { duration: 0.3, ease: "easeIn" },
+    },
+  };
+
+  const mobileLinkVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
   };
 
   return (
@@ -278,7 +289,7 @@ const Header = () => {
             </motion.div>
           </div>
           <div className="lg:hidden">
-            <button onClick={toggleMenu} className="">
+            <button onClick={toggleMenu} aria-label="Toggle mobile menu">
               {isOpen ? (
                 <Image src={MenuClose} alt="Menu Close Icon" />
               ) : (
@@ -294,122 +305,273 @@ const Header = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         ></motion.div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <motion.div
-            className={`lg:hidden absolute left-0 w-full z-20 bg-white flex items-center flex-col transition-all duration-700 ease-in-out ${
-              isAnimatingOut ? "animationMoveOut " : "animationMove h-[86vh]"
-            }`}
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <ul className="flex items-center w-full flex-col gap-4 pt-4 text-black text-base font-normal font-secondary leading-tight">
-              <li>
-                <Link href="/" onClick={handleLinkClick}>
-                  Home
-                </Link>
-              </li>
-              <div className=" w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
-
-              <li className="relative flex flex-col items-center w-full">
-                <div className="flex justify-center items-center">
-                  <Link
-                    href="#"
-                    className="flex items-center"
-                    onClick={handleLinkClick}
-                  >
-                    About Us
-                  </Link>
-                  <svg
-                    onClick={() => toggleAccordion(0)}
-                    className="h-5 w-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
-                {activeIndex === 0 && (
-                  <div className="w-full">
-                    <ul
-                      className={`w-full flex flex-col items-center justify-center `}
-                    >
-                      <div className="w-full h-[0px] opacity-40  border-2 mt-2 border-[#0000004D] "></div>
-
-                      <li className="px-3 py-2 hover:bg-primary hover:text-white ">
-                        <Link href="/about/company" onClick={handleLinkClick}>
-                          Company Profile
-                        </Link>
-                      </li>
-                      <li className="px-3 py-2 hover:bg-primary hover:text-white ">
-                        <Link href="/about/corporate" onClick={handleLinkClick}>
-                          Corporate
-                        </Link>
-                      </li>
-
-                      <div className="w-full h-[0px] opacity-40  border-2 mt-2 border-[#0000004D] "></div>
-                    </ul>
-                  </div>
-                )}
-              </li>
-              <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
-
-              <li className="relative flex flex-col items-center w-full">
-                <div className="flex items-center justify-center w-full">
-                  <Link
-                    href="/product"
-                    className="flex items-center"
-                    onClick={handleLinkClick}
-                  >
-                    Products
-                  </Link>
-                </div>
-              </li>
-              <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
-
-              <li className="relative">
-                <Link href="/news" onClick={handleLinkClick}>
-                  News & Events
-                </Link>
-              </li>
-              <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
-              <li className="relative">
-                <Link href="/careers" onClick={handleLinkClick}>
-                  Careers
-                </Link>
-              </li>
-              <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
-
-              <li className="relative">
-                <Link href="/contact" onClick={handleLinkClick}>
-                  Contact Us
-                </Link>
-              </li>
-              <div className="w-full h-[0px] opacity-40 border border-[#0000004D] "></div>
-            </ul>
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isOpen && (
             <motion.div
-              className="px-[25px] mt-12 py-3 bg-primary justify-center items-center gap-4 inline-flex text-white text-base font-medium font-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="fixed inset-0 bg-black/20 z-40 lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={toggleMenu}
+            />
+          )}
+        </AnimatePresence>
+
+        {/* Mobile Menu Panel */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="fixed top-0 left-0 h-full w-80 bg-white shadow-lg z-50 p-6 lg:hidden overflow-y-auto"
+              variants={mobileMenuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
             >
-              Get this from Jurhy <Image src={RightArrow} alt="Right Arrow" />
+              <div className="flex justify-between items-center mb-8">
+                <Link
+                  href="/"
+                  className="flex items-center"
+                  onClick={handleLinkClick}
+                >
+                  <Image
+                    src={Logo}
+                    alt="Pure Pharmaceuticals Logo"
+                    className="h-10 w-40 object-contain"
+                  />
+                </Link>
+                <button onClick={toggleMenu} aria-label="Close mobile menu">
+                  <Image src={MenuClose} alt="Menu Close Icon" />
+                </button>
+              </div>
+
+              <motion.nav
+                variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              >
+                <ul className="flex flex-col gap-2 text-lg font-medium text-neutral-gray">
+                  <motion.li
+                    variants={mobileLinkVariants}
+                    className="py-3 border-b border-gray-200"
+                  >
+                    <Link
+                      href="/"
+                      className={`hover:text-primary cursor-pointer block ${
+                        pathname === "/" ? "text-primary font-bold" : ""
+                      }`}
+                      onClick={handleLinkClick}
+                    >
+                      Home
+                    </Link>
+                  </motion.li>
+
+                  <motion.li
+                    variants={mobileLinkVariants}
+                    className="py-3 border-b border-gray-200"
+                  >
+                    <div className="flex justify-between items-center">
+                      <span
+                        className={`cursor-pointer ${
+                          pathname === "/about" ||
+                          pathname === "/about/company" ||
+                          pathname === "/about/corporate"
+                            ? "text-primary font-bold"
+                            : ""
+                        }`}
+                      >
+                        About Us
+                      </span>
+                      <svg
+                        onClick={() => toggleAccordion(0)}
+                        className={`h-5 w-5 transition-transform cursor-pointer ${
+                          activeIndex === 0 ? "rotate-180" : ""
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                    <AnimatePresence>
+                      {activeIndex === 0 && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <ul className="mt-3 ml-4 space-y-2">
+                            <li>
+                              <Link
+                                href="/about/company"
+                                className="block py-2 hover:text-primary"
+                                onClick={handleLinkClick}
+                              >
+                                Company Profile
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/about/corporate"
+                                className="block py-2 hover:text-primary"
+                                onClick={handleLinkClick}
+                              >
+                                Corporate
+                              </Link>
+                            </li>
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.li>
+
+                  <motion.li
+                    variants={mobileLinkVariants}
+                    className="py-3 border-b border-gray-200"
+                  >
+                    <div className="flex justify-between items-center">
+                      <Link
+                        href="/category"
+                        className={`cursor-pointer ${
+                          pathname === "/category" ? "text-primary font-bold" : ""
+                        }`}
+                        onClick={handleLinkClick}
+                      >
+                        Products
+                      </Link>
+                      <svg
+                        onClick={() => toggleAccordion(1)}
+                        className={`h-5 w-5 transition-transform cursor-pointer ${
+                          activeIndex === 1 ? "rotate-180" : ""
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                    <AnimatePresence>
+                      {activeIndex === 1 && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <ul className="mt-3 ml-4 space-y-2 max-h-48 overflow-y-auto">
+                            {categories.map((category, index) => (
+                              <li key={index}>
+                                <Link
+                                  href={`/category/${category.slug}`}
+                                  className="block py-2 hover:text-primary text-sm"
+                                  onClick={handleLinkClick}
+                                >
+                                  {category.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.li>
+
+                  <motion.li
+                    variants={mobileLinkVariants}
+                    className="py-3 border-b border-gray-200"
+                  >
+                    <Link
+                      href="/news"
+                      className={`hover:text-primary cursor-pointer block ${
+                        pathname === "/news" ? "text-primary font-bold" : ""
+                      }`}
+                      onClick={handleLinkClick}
+                    >
+                      News & Events
+                    </Link>
+                  </motion.li>
+
+                  <motion.li
+                    variants={mobileLinkVariants}
+                    className="py-3 border-b border-gray-200"
+                  >
+                    <Link
+                      href="/careers"
+                      className={`hover:text-primary cursor-pointer block ${
+                        pathname === "/careers" ? "text-primary font-bold" : ""
+                      }`}
+                      onClick={handleLinkClick}
+                    >
+                      Careers
+                    </Link>
+                  </motion.li>
+
+                  <motion.li
+                    variants={mobileLinkVariants}
+                    className="py-3 border-b border-gray-200"
+                  >
+                    <Link
+                      href="/contact"
+                      className={`hover:text-primary cursor-pointer block ${
+                        pathname === "/contact" ? "text-primary font-bold" : ""
+                      }`}
+                      onClick={handleLinkClick}
+                    >
+                      Contact Us
+                    </Link>
+                  </motion.li>
+                </ul>
+
+                {/* Shop Now Button */}
+                <motion.div
+                  variants={mobileLinkVariants}
+                  className="mt-8"
+                >
+                  <motion.button
+                    className="w-full px-6 py-3 bg-primary text-white flex justify-center items-center gap-3 rounded-lg text-base font-medium font-primary"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Shop Now <Image src={RightArrow} alt="Right Arrow" />
+                  </motion.button>
+                </motion.div>
+
+                {/* Social Icons */}
+                <motion.div
+                  variants={mobileLinkVariants}
+                  className="flex gap-3 mt-8 justify-center"
+                >
+                  <SocialIcons icon={<FaFacebookF />} />
+                  <SocialIcons icon={<FaTwitter />} />
+                  <SocialIcons icon={<AiFillInstagram />} />
+                  <SocialIcons icon={<FaYoutube />} />
+                </motion.div>
+
+                {/* Contact Info */}
+                <motion.div
+                  variants={mobileLinkVariants}
+                  className="mt-8 text-center text-sm text-neutral-dark-gray"
+                >
+                  <p>info@thepurepharma.com</p>
+                  <p>+97125067345</p>
+                </motion.div>
+              </motion.nav>
             </motion.div>
-            <div className="flex gap-2 mt-10 mb-24">
-              <SocialIcons icon={<FaFacebookF />} />
-              <SocialIcons icon={<FaTwitter />} />
-              <SocialIcons icon={<AiFillInstagram />} />
-              <SocialIcons icon={<FaYoutube />} />
-            </div>
-          </motion.div>
-        )}
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
