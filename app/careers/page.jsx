@@ -5,8 +5,6 @@ import Banner from "@/public/images/careersBanner.svg";
 import BreadCrumbs from "../Components/home/BreadCrumbs";
 import { getCareerMetadata } from "@/app/services/api";
 
-
-
 export async function generateMetadata() {
   const metadata = await getCareerMetadata();
 
@@ -22,7 +20,6 @@ export async function generateMetadata() {
   const description = metaData?.metaDescription;
   const keywords = metaData?.metaKeywords;
   const ogImage = metaData?.ogImage?.url ;
-  const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;
   const canonicalUrl = `https://thepurepharma.com/careers`;
   let metaRobots = "index, follow";
 
@@ -76,7 +73,7 @@ const page = () => {
             </h2>
             <p className="mt-5 text-base font-normal font-secondary leading-normal text-[#1e1e1e]">
               Whether you are still at university or looking for a new
-              professional opportunity, we at QLife Pharma may be able to meet
+              professional opportunity, we at Pure Pharma may be able to meet
               your aspirations. We are continuously looking for talented and
               committed individuals that can further improve our organization.
               <br />
@@ -91,6 +88,9 @@ const page = () => {
               let us know the duration, as well as your subject and level (BSc,
               MSc or PhD).
             </p>
+            <a href="mailto:careers@thepurepharma.com" className="mt-5 inline-block text-base font-normal font-secondary leading-normal text-[#1e1e1e]">
+              Email us at <span className="text-primary">careers@thepurepharma.com</span>
+            </a>
           </motion.div>
         </div>
       </div>
