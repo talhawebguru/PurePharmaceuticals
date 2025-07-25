@@ -59,8 +59,8 @@ export async function generateMetadata() {
 const page = () => {
   return (
     <>
-        <PageNameBanner image={Banner} title=""/>
-        <BreadCrumbs name="Company Profile"/>
+        <PageNameBanner image={Banner} title="Company Profile"/>
+        <BreadCrumbs name="About / Company Profile"/>
         <main>
             <CompanyProfile/>
         </main>

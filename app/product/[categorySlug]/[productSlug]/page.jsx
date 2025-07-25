@@ -55,11 +55,25 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const page = () => {
+const page = async ({params}) => {
+  console.log(params,"params product page")
+  const { productSlug } = params;
+
+  console.log(productSlug,"product slug")
+
+  // Fetch product data to get the content
+  let productData = null;
+  try {
+    const response = await getProductBySlug(productSlug);
+    productData = response.data[0];
+  } catch (error) {
+    console.error('Error fetching product data:', error);
+  }
+
   return (
     <>
-      <PageNameBanner image={Banner} title="" />
-      <BreadCrumbs name="Products" />
+      <PageNameBanner image={Banner} title={`${productData?.name || "Product"}`}/>
+      <BreadCrumbs name={`Products / ${productData?.name || "Product"}`} />
       <ProductDisplay />
     </>
   );

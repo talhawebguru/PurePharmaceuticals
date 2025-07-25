@@ -11,8 +11,8 @@ import LatestNews from "@/app/Components/home/LatestNews";
 const page = () => {
   return (
     <>
-      <PageNameBanner image={Banner} title="" />
-      <BreadCrumbs name="News and Events" />
+      <PageNameBanner image={Banner} title="Blog 1" />
+      <BreadCrumbs name="News and Events / Blog 1" />
       <main>
         <div className="2xl:max-w-[1440px] 2xl:mx-auto 2xl:px-40 xl:px-[90px] lg:px-[40px] px-5 mt-6">
           <h2 className="text-[#0e493f] text-[32px] font-normal font-arial leading-[38.40px]">

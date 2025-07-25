@@ -1,6 +1,7 @@
 import BreadCrumbs from '@/app/Components/home/BreadCrumbs'
 import PageNameBanner from '@/app/Components/home/PageNameBanner'
 import ProductCard from '@/app/Components/newProduct/ProductCard';
+import CategoryContent from '@/app/Components/product/CategoryContent';
 import Banner from "@/public/images/productBanner.png";
 import React from 'react'
 import { getCategories } from "@/app/services/api";
@@ -28,7 +29,7 @@ export async function generateMetadata({params}) {
   const keywords = metaData?.metaKeywords;
   const ogImage = metaData?.ogImage?.url ;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;
-  const canonicalUrl = `https://thepurepharma.com/product/${categorySlug}`;
+  const canonicalUrl = `https://thepurepharma.com/category/${categorySlug}`;
   let metaRobots = "index, follow";
 
   return {
@@ -62,14 +63,31 @@ export async function generateMetadata({params}) {
   };
 }
 
-const page = () => {
+const page = async ({ params }) => {
+  const { categorySlug } = params;
+  
+  // Fetch category data to get the content
+  let categoryData = null;
+  try {
+    const response = await getCategories();
+    categoryData = response.data.find(cat => cat.slug === categorySlug);
+  } catch (error) {
+    console.error('Error fetching category data:', error);
+  }
+
   return (
     <>
-    <PageNameBanner image={Banner} title="" />
-    <BreadCrumbs name="Products" />
-    <ProductCard />
+      <PageNameBanner 
+        image={Banner} 
+        title={categoryData?.name || "Products"} 
+      />
+      <BreadCrumbs name={`Category / ${categoryData?.name}` || "Products"} />
+      <ProductCard />
+      <CategoryContent 
+        categoryContent={categoryData?.categoryContent} 
+        categoryName={categoryData?.name}
+      />
     </>
-
   )
 }
 

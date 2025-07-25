@@ -59,7 +59,7 @@ export async function generateMetadata() {
 const page = () => {
   return (
     <>
-      <PageNameBanner image={Banner} title="" />
+      <PageNameBanner image={Banner} title="Categories" />
       <BreadCrumbs name="Products Category" />
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
