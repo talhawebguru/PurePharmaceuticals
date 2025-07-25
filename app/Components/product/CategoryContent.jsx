@@ -18,7 +18,7 @@ const CategoryContent = ({ categoryContent, categoryName }) => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.01 }}
             >
               <HeadingTag 
                 className={`font-bold text-neutral-dark-gray mb-4 ${
@@ -46,7 +46,7 @@ const CategoryContent = ({ categoryContent, categoryName }) => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.01 }}
               className="text-neutral-gray leading-relaxed mb-4 text-base lg:text-lg"
             >
               {block.children.map((child, childIndex) => (
@@ -68,7 +68,7 @@ const CategoryContent = ({ categoryContent, categoryName }) => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.01 }}
               className="mb-4"
             >
               <ListTag className={`${
@@ -107,7 +107,7 @@ const CategoryContent = ({ categoryContent, categoryName }) => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
         >
           {renderContent(categoryContent)}
         </motion.div>
