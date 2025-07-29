@@ -298,9 +298,9 @@ const Header = () => {
           </div>
         </nav>
         <motion.div
-          className="w-full h-[0px] opacity-40 border border-[#0000004D] lg:hidden mt-5"
+          className="w-full h-[0px] opacity-30 border border-[#00000022] lg:hidden mt-5"
           initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 0.3, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         ></motion.div>
 
