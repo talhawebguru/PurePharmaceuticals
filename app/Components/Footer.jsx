@@ -35,7 +35,7 @@ const Footer = () => {
               <ul className='flex flex-col gap-3 mt-3 text-black text-base font-normal font-secondary leading-normal"'>
                 <li><Link href='/'>Home</Link></li>
                 <li><Link href='/about/company'>About us</Link></li>
-                <li><Link href='/product'>Product</Link></li>
+                <li><Link href='/category'>Product</Link></li>
                 <li><Link href="/contact">Contact Us</Link></li>
               </ul>
             </div>
@@ -48,7 +48,7 @@ const Footer = () => {
           >
             <h2 className="text-black text-2xl font-normal font-arial leading-9">Location</h2>
             <p className="xl:w-80 w-[75%] lg:w-52 text-black text-base font-normal font-secondary leading-normal mt-3">
-              PPGH+X76 - Kizad - Khalifa Industrial Zone - Abu Dhabi
+              Pure Pharmaceutical Manufacturing L.L.C Kizad (KHIA 8-18), Abu Dhabi - 133685 United Arab Emirates
             </p>
           </motion.div>
         </div>
