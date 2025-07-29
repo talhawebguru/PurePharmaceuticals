@@ -59,8 +59,6 @@ const page = async ({params}) => {
   console.log(params,"params product page")
   const { productSlug } = params;
 
-  console.log(productSlug,"product slug")
-
   // Fetch product data to get the content
   let productData = null;
   try {
