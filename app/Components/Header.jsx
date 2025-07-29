@@ -27,7 +27,6 @@ const Header = () => {
       try {
         const response = await getCategories();
         setCategories(response.data);
-        console.log(response.data);
         if (response.data.length > 0) {
           setSelectedImage(response.data[0].categoryicon.url);
         }

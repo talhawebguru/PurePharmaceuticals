@@ -5,14 +5,14 @@ const nextConfig = {
       remotePatterns: [
         {
           protocol: 'https',
-          hostname: 'b7a6-2-50-150-167.ngrok-free.app',
+          hostname: 'mastermind.thepurepharma.com',
           port: '',
           pathname: '/**',
         },
         {
-          protocol: 'http',
-          hostname: 'localhost',
-          port: '1337',
+          protocol: 'https',
+          hostname: 'mastermind.thepurepharma.com',
+          port: '1342',
           pathname: '/**',
         },
       ],

@@ -56,7 +56,6 @@ export async function generateMetadata({ params }) {
 }
 
 const page = async ({params}) => {
-  console.log(params,"params product page")
   const { productSlug } = params;
 
   // Fetch product data to get the content
