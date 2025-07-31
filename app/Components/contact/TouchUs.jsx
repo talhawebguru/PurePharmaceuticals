@@ -35,7 +35,7 @@ const TouchUs = () => {
             <div>
               <button 
                 type="submit"
-                className="bg-primary text-white py-3 px-10 mt-5 hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95 transform transition-transform"
+                className="bg-primary text-white py-3 px-10 mt-5 hover:bg-primary/90 duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95 transform transition-transform"
               >
                 Submit
               </button>
