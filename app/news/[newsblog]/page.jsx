@@ -8,6 +8,15 @@ import Blog1 from "@/public/images/Blog1.png";
 import RelatedProducts from "@/app/Components/product/RelatedProducts";
 import LatestNews from "@/app/Components/home/LatestNews";
 
+// Generate static params for all news articles at build time
+export async function generateStaticParams() {
+  // Return static news items - you can connect this to your news API
+  return [
+    { newsblog: 'news1' },
+    // Add more news slugs as needed when you have more articles
+  ];
+}
+
 const page = () => {
   return (
     <>
