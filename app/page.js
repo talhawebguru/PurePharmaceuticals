@@ -2,25 +2,31 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import Hero from "./Components/home/Hero";
 import { getHomeMetadata } from "./services/api";
+import { 
+  ContentSkeleton, 
+  PartnersSkeleton, 
+  NewsSkeleton, 
+  VerticalsSkeleton 
+} from "./Components/ui/SkeletonComponents";
 
-// Lazy load components that are below the fold
+// Lazy load components that are below the fold with proper skeleton loaders
 const Verticals = dynamic(() => import("./Components/home/Verticals"), {
-  loading: () => <div className="h-48 animate-pulse bg-gray-200" />
+  loading: () => <VerticalsSkeleton />
 });
 const About = dynamic(() => import("./Components/home/About"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+  loading: () => <ContentSkeleton variant="about" />
 });
 const PureCommitted = dynamic(() => import("./Components/home/PureCommitted"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+  loading: () => <ContentSkeleton variant="grid" />
 });
 const WhyPure = dynamic(() => import("./Components/home/WhyPure"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+  loading: () => <ContentSkeleton />
 });
 const Partners = dynamic(() => import("./Components/home/Partners"), {
-  loading: () => <div className="h-64 animate-pulse bg-gray-200" />
+  loading: () => <PartnersSkeleton />
 });
 const LatestNews = dynamic(() => import("./Components/home/LatestNews"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-200" />
+  loading: () => <NewsSkeleton />
 });
 
 export async function generateMetadata() {
@@ -78,22 +84,22 @@ export default function Home() {
     <>
       <main>
         <Hero />
-        <Suspense fallback={<div className="h-48 animate-pulse bg-gray-200" />}>
+        <Suspense fallback={<VerticalsSkeleton />}>
           <Verticals />
         </Suspense>
-        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+        <Suspense fallback={<ContentSkeleton variant="about" />}>
           <About />
         </Suspense>
-        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+        <Suspense fallback={<ContentSkeleton variant="grid" />}>
           <PureCommitted />
         </Suspense>
-        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+        <Suspense fallback={<ContentSkeleton />}>
           <WhyPure />
         </Suspense>
-        <Suspense fallback={<div className="h-64 animate-pulse bg-gray-200" />}>
+        <Suspense fallback={<PartnersSkeleton />}>
           <Partners />
         </Suspense>
-        <Suspense fallback={<div className="h-96 animate-pulse bg-gray-200" />}>
+        <Suspense fallback={<NewsSkeleton />}>
           <LatestNews />
         </Suspense>
       </main>

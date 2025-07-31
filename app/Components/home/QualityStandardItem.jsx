@@ -4,7 +4,16 @@ import Image from 'next/image';
 
 const QualityStandardItem = ({ src, alt, title, description }) => (
     <div className="flex flex-col items-center justify-between">
-      <Image src={src} alt={alt} width={90} height={120} className="object-contain mx-auto" />
+      <Image 
+        src={src} 
+        alt={alt} 
+        width={90} 
+        height={120} 
+        className="object-contain mx-auto" 
+        sizes="90px"
+        quality={90}
+        loading="lazy"
+      />
       <h3 className="text-center text-black text-xl font-medium font-secondary leading-[30px] mt-5">
         {title}
       </h3>

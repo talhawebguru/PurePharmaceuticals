@@ -8,10 +8,16 @@ import MenuClose from "@/public/images/menuClose.svg";
 import RightArrow from "@/public/images/rightArrowGreen.svg";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
-import { AiFillInstagram } from "react-icons/ai";
 import SocialIcons from "./SocialIcons";
 import { getCategories } from "@/app/services/api";
+
+// Optimized icon imports
+import { 
+  FaFacebookF, 
+  FaTwitter, 
+  FaYoutube 
+} from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
 
 const Header = () => {
   const pathname = usePathname();
@@ -31,7 +37,9 @@ const Header = () => {
           setSelectedImage(response.data[0].categoryicon.url);
         }
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error("Error fetching categories:", error);
+        }
       }
     };
 

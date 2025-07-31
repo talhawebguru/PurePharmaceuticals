@@ -1,10 +1,30 @@
 import BreadCrumbs from '@/app/Components/home/BreadCrumbs'
 import PageNameBanner from '@/app/Components/home/PageNameBanner'
 import ProductCard from '@/app/Components/newProduct/ProductCard';
-import CategoryContent from '@/app/Components/product/CategoryContent';
 import Banner from "@/public/images/productBanner.png";
 import React from 'react'
 import { getCategories } from "@/app/services/api";
+import dynamic from 'next/dynamic';
+import { ContentSkeleton } from '@/app/Components/ui/SkeletonComponents';
+
+// Dynamic import for CategoryContent (loads only when needed)
+const CategoryContent = dynamic(() => import('@/app/Components/product/CategoryContent'), {
+  loading: () => <ContentSkeleton />,
+  ssr: true // Enable server-side rendering for SEO
+});
+
+// Generate static params for all categories at build time
+export async function generateStaticParams() {
+  try {
+    const response = await getCategories();
+    return response.data.map((category) => ({
+      categorySlug: category.slug,
+    }));
+  } catch (error) {
+    // Return empty array in case of error to prevent build failure
+    return [];
+  }
+}
 
 
 
@@ -72,7 +92,10 @@ const page = async ({ params }) => {
     const response = await getCategories();
     categoryData = response.data.find(cat => cat.slug === categorySlug);
   } catch (error) {
-    console.error('Error fetching category data:', error);
+    // Log error only in development, use fallback in production
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching category data:', error);
+    }
   }
 
   return (

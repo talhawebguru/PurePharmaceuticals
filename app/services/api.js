@@ -5,7 +5,6 @@ const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL, 
   headers: {
     'Content-Type': 'application/json',
-    // 'ngrok-skip-browser-warning': 'true'
   },
 });
 
@@ -15,7 +14,9 @@ export const getProducts = async () => {
     const response = await api.get('/api/products');
     return response.data;
   } catch (error) {
-    console.error('Error fetching products:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching products:', error);
+    }
     throw error;
   }
 };
@@ -26,7 +27,9 @@ export const getCategories = async () => {
     const response = await api.get('/api/categories?populate=*');
     return response.data;
   } catch (error) {
-    console.error('Error fetching categories:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching categories:', error);
+    }
     throw error;
   }
 };
@@ -36,7 +39,9 @@ export const getProductsByCategory = async (categorySlug) => {
     const response = await api.get(`/api/products?populate=*&filters[categories][slug][$eq]=${categorySlug}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching products by category:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching products by category:', error);
+    }
     throw error;
   }
 };
@@ -46,7 +51,22 @@ export const getProductBySlug = async (productSlug) => {
     const response = await api.get(`/api/products?populate=*&filters[slug][$eq]=${productSlug}`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching product:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching product:', error);
+    }
+    throw error;
+  }
+};
+
+// Function to get all products for static generation
+export const getAllProducts = async () => {
+  try {
+    const response = await api.get('/api/products?populate=categories');
+    return response.data;
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching all products:', error);
+    }
     throw error;
   }
 };
@@ -57,7 +77,9 @@ export const getHomeMetadata = async () => {
     const response = await api.get('/api/home');
     return response.data;
   } catch (error) {
-    console.error('Error fetching home metadata:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching home metadata:', error);
+    }
     throw error;
   }
 };
@@ -68,7 +90,9 @@ export const getAboutMetadata = async () => {
     const response = await api.get('/api/about');
     return response.data;
   } catch (error) {
-    console.error('Error fetching about metadata:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching about metadata:', error);
+    }
     throw error;
   }
 };
@@ -77,7 +101,9 @@ export const getAboutCorporateMetadata = async () => {
     const response = await api.get('/api/about-corporate');
     return response.data;
   } catch (error) {
-    console.error('Error fetching about metadata:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching about metadata:', error);
+    }
     throw error;
   }
 };
@@ -88,7 +114,9 @@ export const getContactMetadata = async () => {
     const response = await api.get('/api/contact');
     return response.data;
   } catch (error) {
-    console.error('Error fetching contact metadata:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching contact metadata:', error);
+    }
     throw error;
   }
 };
@@ -99,7 +127,9 @@ export const getCareerMetadata = async () => {
     const response = await api.get('/api/career');
     return response.data;
   } catch (error) {
-    console.error('Error fetching career metadata:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching career metadata:', error);
+    }
     throw error;
   }
 };
@@ -110,7 +140,9 @@ export const getNewsMetadata = async () => {
     const response = await api.get('/api/new');
     return response.data;
   } catch (error) {
-    console.error('Error fetching news metadata:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching news metadata:', error);
+    }
     throw error;
   }
 };
@@ -121,7 +153,9 @@ export const getProductPageMetadata = async () => {
     const response = await api.get('/api/productpage');
     return response.data;
   } catch (error) {
-    console.error('Error fetching product page metadata:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error fetching product page metadata:', error);
+    }
     throw error;
   }
 };

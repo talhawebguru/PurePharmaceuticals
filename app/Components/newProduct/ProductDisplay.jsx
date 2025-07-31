@@ -25,7 +25,9 @@ const ProductDisplay = () => {
         }
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching product:", error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error("Error fetching product:", error);
+        }
         setLoading(false);
       }
     };

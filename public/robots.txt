@@ -1,0 +1,20 @@
+User-agent: *
+
+# Block search and query-based URLs
+Disallow: /search
+Disallow: /*?*
+
+# Block non-essential or auth-related areas 
+Disallow: /login
+Disallow: /register
+Disallow: /account
+Disallow: /admin
+
+# Allow all product and category content
+Allow: /product/
+Allow: /product/*
+Allow: /category/
+Allow: /
+
+# Sitemap
+Sitemap: https://thepurepharma.com/sitemap.xml

@@ -4,8 +4,7 @@ import { getProductsByCategory } from "@/app/services/api";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "motion/react"
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import { CardSkeleton } from "../ui/SkeletonComponents";
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
@@ -23,7 +22,9 @@ const ProductCard = () => {
         }
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error("Error fetching products:", error);
+        }
         setProducts([]);
         setLoading(false);
       }
@@ -64,19 +65,7 @@ const ProductCard = () => {
   };
 
   if (loading) {
-    return (
-      <div className="xl:mx-[90px] lg:mx-[40px] mx-5 2xl:max-w-[1440px] 2xl:mx-auto mt-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 xl:px-20 lg:px-10 sm:px-5 px-2.5">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <div key={index} className="w-full h-28 bg-[#179f8e]/5 rounded-[20px] flex items-center justify-start gap-5">
-            <Skeleton width={6} height={50} className="ml-5" />
-            <div className="flex flex-col items-start justify-center gap-2">
-              <Skeleton width={150} height={28} />
-              <Skeleton width={100} height={20} />
-            </div>
-          </div>
-        ))}
-      </div>
-    );
+    return <CardSkeleton count={8} variant="product" />;
   }
 
   if (products.length === 0) {

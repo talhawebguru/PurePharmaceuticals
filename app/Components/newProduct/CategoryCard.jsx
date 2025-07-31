@@ -4,8 +4,7 @@ import { getCategories } from "@/app/services/api";
 import { motion } from "motion/react"
 import Link from "next/link";
 import Image from "next/image";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import { CardSkeleton } from "../ui/SkeletonComponents";
 
 const CategoryCard = () => {
   const [categories, setCategories] = useState([]);
@@ -18,7 +17,9 @@ const CategoryCard = () => {
         setCategories(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        if (process.env.NODE_ENV === 'development') {
+          console.error("Error fetching categories:", error);
+        }
         setLoading(false);
       }
     };
@@ -55,6 +56,10 @@ const CategoryCard = () => {
     },
   };
 
+  if (loading) {
+    return <CardSkeleton count={15} variant="category" />;
+  }
+
   return (
     <motion.div
       variants={containerVariants}
@@ -62,16 +67,9 @@ const CategoryCard = () => {
       animate="visible"
       className="xl:mx-[90px] lg:mx-[40px] mx-5 2xl:max-w-[1440px] 2xl:mx-auto mt-12 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 xl:px-20 lg:px-10 sm:px-5 px-2.5"
     >
-      {loading
-        ? Array.from({ length: 15 }).map((_, index) => (
-            <div key={index} className="w-full h-[213px] bg-[#179f8e]/5 rounded-[20px] flex flex-col items-center justify-center cursor-pointer gap-5">
-              <Skeleton circle={true} height={65} width={65} />
-              <Skeleton width={180} height={28} />
-            </div>
-          ))
-        : categories.map((category) => (
-            <Link href={`/category/${category.slug}`} key={category.id}>
-              <motion.div
+      {categories.map((category) => (
+        <Link href={`/category/${category.slug}`} key={category.id}>
+          <motion.div
                 key={category.id}
                 variants={cardVariants}
                 whileHover={{

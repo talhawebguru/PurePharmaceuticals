@@ -15,14 +15,14 @@ const TouchUs = () => {
             <input
               type="text"
               placeholder="Name"
-              className="py-3 pl-5 w-[80%] xs:w-[92%] bg-[#FAFAFA] font-primary leading-[17.68px] font-normal text-base text-[#04040466]"
+              className="py-3 pl-5 w-[80%] xs:w-[92%] bg-[#FAFAFA] font-primary leading-[17.68px] font-normal text-base text-[#04040466] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
             />
             <input
               type="email"
               name=""
               id=""
               placeholder="Email"
-              className="py-3 pl-5  w-[80%] xs:w-[92%] bg-[#FAFAFA] font-primary leading-[17.68px] font-normal text-base text-[#04040466] mt-5"
+              className="py-3 pl-5  w-[80%] xs:w-[92%] bg-[#FAFAFA] font-primary leading-[17.68px] font-normal text-base text-[#04040466] mt-5 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300"
             />
             <textarea
               name="Message"
@@ -30,10 +30,13 @@ const TouchUs = () => {
               cols="30"
               rows="7"
               placeholder="Message"
-              className="py-3 pl-5 w-[80%] xs:w-[92%] bg-[#FAFAFA] font-primary leading-[17.68px] font-normal text-base text-[#04040466] mt-5"
+              className="py-3 pl-5 w-[80%] xs:w-[92%] bg-[#FAFAFA] font-primary leading-[17.68px] font-normal text-base text-[#04040466] mt-5 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 resize-none"
             ></textarea>
             <div>
-              <button className="bg-primary text-white py-3 px-10 mt-5">
+              <button 
+                type="submit"
+                className="bg-primary text-white py-3 px-10 mt-5 hover:bg-primary/90 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95 transform transition-transform"
+              >
                 Submit
               </button>
             </div>
