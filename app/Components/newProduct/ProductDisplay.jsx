@@ -141,7 +141,7 @@ const ProductDisplay = () => {
           </div>
           <div>
             <p className="text-[#18130f] text-base font-normal font-arial">
-              {product.note.note}
+              {product?.note?.note}
             </p>
           </div>
         </div>

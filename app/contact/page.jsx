@@ -10,14 +10,14 @@ export async function generateMetadata() {
 
   if (!metadata || metadata.data.length === 0) {
     return {
-      title: 'About - Pure Pharmaceuticals',
+      title: 'Contact - Pure Pharmaceuticals',
       description: 'Welcome to Pure Pharmaceuticals. We provide high-quality pharmaceutical products.',
     };
   }
 
   const metaData = metadata.data;
   const title = metaData?.metaTitle ;
-  const description = metaData?.metaDescription;
+  const description = metaData?.metaDescripition;
   const keywords = metaData?.metaKeywords;
   const ogImage = metaData?.ogImage?.url ;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;

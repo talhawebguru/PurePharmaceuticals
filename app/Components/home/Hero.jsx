@@ -47,7 +47,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             aria-label="Get started with Pure Pharmaceuticals"
           >
-            Get Started <Image src={RightArrow} alt="" width={16} height={16} />
+            Get Started <Image src={RightArrow} alt=" Right Arrow" width={16} height={16} />
           </motion.button>
         </motion.div>
       </div>
