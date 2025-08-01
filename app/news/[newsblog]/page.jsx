@@ -28,9 +28,9 @@ const page = () => {
             News & Events
           </h2>
           <Image src={Blog1} alt="banner" className="w-full mt-7" />
-          <h1 className="text-[#0e493f] text-[32px] font-normal font-arial leading-[38.40px] mt-8">
+          <h2 className="text-[#0e493f] text-[32px] font-normal font-arial leading-[38.40px] mt-8">
             Akses Swiss Scientific office
-          </h1>
+          </h2>
           <p className="text-[#222222] text-base font-normal font-secondary leading-tight mt-4">
             Purepharma's CEO, Mr. Musthafa, Meets with Manas Varalwar in
             Abudhabi

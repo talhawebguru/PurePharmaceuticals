@@ -76,9 +76,9 @@ const ProductDisplay = () => {
       >
         <div className="grid grid-cols-12 gap-5">
           <div className="flex flex-col gap-5 xl:col-span-8 md:col-span-6 col-span-12">
-            <h1 className="text-[#18130f] text-[32px] font-normal font-arial leading-[38.40px]">
+            <h2 className="text-[#18130f] text-[32px] font-normal font-arial leading-[38.40px]">
               {product.name}
-            </h1>
+            </h2>
 
             <h2 className="text-[#005948] text-base font-normal font-arial leading-tight">
               Generic Name:
