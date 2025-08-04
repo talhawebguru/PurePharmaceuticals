@@ -129,7 +129,7 @@ const Header = () => {
             <Link href="/" className="xl::w-[222px]">
               <Image
                 src={Logo}
-                alt="StomaFlex Logo"
+                alt="PurePharma Logo"
                 className="xl:w-[222px] lg:w-[200px]"
               />
             </Link>

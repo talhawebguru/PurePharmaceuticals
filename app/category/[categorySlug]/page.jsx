@@ -21,7 +21,6 @@ export async function generateStaticParams() {
       categorySlug: category.slug,
     }));
   } catch (error) {
-    // Return empty array in case of error to prevent build failure
     return [];
   }
 }
@@ -45,7 +44,7 @@ export async function generateMetadata({params}) {
 
   const metaData = metadata;
   const title = metaData?.metaTitle ;
-  const description = metaData?.metaDescription;
+  const description = metaData?.metaDescripition;
   const keywords = metaData?.metaKeywords;
   const ogImage = metaData?.ogImage?.url ;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;
