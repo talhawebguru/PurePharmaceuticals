@@ -288,12 +288,13 @@ const Header = () => {
               </ul>
             </div>
             <motion.div
-              className="px-[20px] py-3 text-primary justify-center items-center gap-3 inline-flex border border-primary rounded-lg text-base font-medium font-primary"
+              className=""
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-            >
+            ><Link href="https://jurhy.com/" target="_blank" className="px-[20px] py-3 text-primary justify-center items-center gap-3 inline-flex border border-primary rounded-lg text-base font-medium font-primary">
               Shop Now <Image src={RightArrow} alt="Right Arrow" />
-            </motion.div>
+
+            </Link></motion.div>
           </div>
           <div className="lg:hidden">
             <button onClick={toggleMenu} aria-label="Toggle mobile menu">
@@ -552,7 +553,9 @@ const Header = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Shop Now <Image src={RightArrow} alt="Right Arrow" />
+                    <Link href="https://jurhy.com/" target="_blank" className="flex items-center">
+                      Shop Now <Image src={RightArrow} alt="Right Arrow" />
+                    </Link>
                   </motion.button>
                 </motion.div>
 

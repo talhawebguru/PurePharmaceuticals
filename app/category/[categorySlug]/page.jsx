@@ -46,7 +46,7 @@ export async function generateMetadata({params}) {
   const title = metaData?.metaTitle ;
   const description = metaData?.metaDescripition;
   const keywords = metaData?.metaKeywords;
-  const ogImage = metaData?.ogImage?.url ;
+  const ogImage = metaData?.categoryicon?.url ;
   const url = `${process.env.NEXT_PUBLIC_API_URL}`;
   const canonicalUrl = `https://thepurepharma.com/category/${categorySlug}`;
   let metaRobots = "index, follow";

@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
   const metaTitle = productData.metaTitle;
   const metaDescription = productData.metaDescripition || 'Product description not available.';
   const canonicalUrl = `https://thepurepharma.com/product/${params.categorySlug}/${productSlug}`;
-  const defaultOgImage = product?.Image?.url;
+  const defaultOgImage = product?.image?.url;
   const imageAlt = product.name;
   let metaRobots = "index, follow";
   return {
