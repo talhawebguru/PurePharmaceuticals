@@ -22,6 +22,7 @@ export async function generateMetadata({ params }) {
   const description = 'Latest news and events from Pure Pharmaceuticals.';
   const canonicalUrl = `https://thepurepharma.com/news/${newsblog || 'news1'}`;
   let metaRobots = "index, follow";
+  const ogImage = '';
   return {
     title,
     description,
@@ -34,13 +35,22 @@ export async function generateMetadata({ params }) {
       description,
       url: canonicalUrl,
       type: 'website',
-      images: [],
+      images: [
+        {
+          url: `${process.env.NEXT_PUBLIC_API_URL}/${ogImage}`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     twitter: {
+      site: '@thepurepharma',
+      creator: '@thepurepharma',
       card: 'summary_large_image',
       title,
       description,
-      images: [],
+      images: [`${process.env.NEXT_PUBLIC_API_URL}/${ogImage}`],
     },
   };
 }

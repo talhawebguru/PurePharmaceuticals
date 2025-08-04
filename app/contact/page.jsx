@@ -20,7 +20,7 @@ export async function generateMetadata() {
   const description = metaData?.metaDescripition;
   const keywords = metaData?.metaKeywords;
   const ogImage = metaData?.ogImage?.url ;
-  const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}`;
   const canonicalUrl = `https://thepurepharma.com/contact`;
   let metaRobots = "index, follow";
 
@@ -35,11 +35,11 @@ export async function generateMetadata() {
     openGraph: {
       title,
       description,
-      url:canonicalUrl,
+      url: canonicalUrl,
       type: 'website',
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/${ogImage}`,
+          url: `${process.env.NEXT_PUBLIC_API_URL}/${ogImage}`,
           width: 1200,
           height: 630,
           alt: title,
@@ -47,10 +47,12 @@ export async function generateMetadata() {
       ],
     },
     twitter: {
+      site: '@thepurepharma',
+      creator: '@thepurepharma',
       card: 'summary_large_image',
       title,
       description,
-      images: [`${process.env.NEXT_PUBLIC_SITE_URL}/${ogImage}`],
+      images: [`${process.env.NEXT_PUBLIC_API_URL}/${ogImage}`],
     },
   };
 }

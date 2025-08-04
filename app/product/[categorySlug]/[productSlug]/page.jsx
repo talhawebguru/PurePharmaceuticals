@@ -49,11 +49,11 @@ export async function generateMetadata({ params }) {
       title: metaTitle,
       description: metaDescription,
       url: canonicalUrl,
-      siteName: 'Pure Pharmaceutical', // Replace with your site name
+      siteName: 'Pure Pharmaceutical',
       type: 'website',
       images: [
         {
-          url: `https://thepurepharma.com/${defaultOgImage}`, // Replace with your default OG image
+          url: `${process.env.NEXT_PUBLIC_API_URL}/${defaultOgImage}`,
           width: 1200,
           height: 630,
           alt: imageAlt,
@@ -61,10 +61,12 @@ export async function generateMetadata({ params }) {
       ],
     },
     twitter: {
+      site: '@thepurepharma',
+      creator: '@thepurepharma',
       card: 'summary_large_image',
       title: metaTitle,
       description: metaDescription,
-      images: [`https://thepurepharma.com/${defaultOgImage}`], // Replace with your default Twitter image
+      images: [`${process.env.NEXT_PUBLIC_API_URL}/${defaultOgImage}`],
     },
   };
 }
