@@ -1,27 +1,26 @@
-import PageNameBanner from '@/app/Components/home/PageNameBanner'
-import React from 'react'
-import Banner from '@/public/images/companyBanner.svg';
-import BreadCrumbs from '@/app/Components/home/BreadCrumbs';
-import CompanyProfile from '@/app/Components/about/CompanyProfile';
+import PageNameBanner from "@/app/Components/home/PageNameBanner";
+import React from "react";
+import Banner from "@/public/images/companyBanner.svg";
+import BreadCrumbs from "@/app/Components/home/BreadCrumbs";
+import CompanyProfile from "@/app/Components/about/CompanyProfile";
 import { getAboutMetadata } from "@/app/services/api";
-
-
 
 export async function generateMetadata() {
   const metadata = await getAboutMetadata();
 
   if (!metadata || metadata.data.length === 0) {
     return {
-      title: 'About - Pure Pharmaceuticals',
-      description: 'Welcome to Pure Pharmaceuticals. We provide high-quality pharmaceutical products.',
+      title: "About - Pure Pharmaceuticals",
+      description:
+        "Welcome to Pure Pharmaceuticals. We provide high-quality pharmaceutical products.",
     };
   }
 
   const metaData = metadata.data;
-  const title = metaData?.metaTitle ;
-  const description = metaData?.metaDescription;
+  const title = metaData?.metaTitle;
+  const description = metaData?.metaDescripition;
   const keywords = metaData?.metaKeywords;
-  const ogImage = metaData?.ogImage?.url ;
+  const ogImage = metaData?.ogImage?.url;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;
   const canonicalUrl = `https://thepurepharma.com/about/company`;
   let metaRobots = "index, follow";
@@ -37,8 +36,10 @@ export async function generateMetadata() {
     openGraph: {
       title,
       description,
-      url:canonicalUrl,
-      type: 'website',
+      alternates: {
+        canonical: canonicalUrl,
+      },
+      type: "website",
       images: [
         {
           url: `${process.env.NEXT_PUBLIC_SITE_URL}/${ogImage}`,
@@ -49,7 +50,7 @@ export async function generateMetadata() {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [`${process.env.NEXT_PUBLIC_SITE_URL}/${ogImage}`],
@@ -59,13 +60,13 @@ export async function generateMetadata() {
 const page = () => {
   return (
     <>
-        <PageNameBanner image={Banner} title="Company Profile"/>
-        <BreadCrumbs name="About / Company Profile"/>
-        <main>
-            <CompanyProfile/>
-        </main>
+      <PageNameBanner image={Banner} title="Company Profile" />
+      <BreadCrumbs name="About / Company Profile" />
+      <main>
+        <CompanyProfile />
+      </main>
     </>
-  ) 
-}
+  );
+};
 
-export default page
+export default page;

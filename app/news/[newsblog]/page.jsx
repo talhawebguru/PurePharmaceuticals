@@ -14,6 +14,36 @@ export async function generateStaticParams() {
     // Add more news slugs as needed when you have more articles
   ];
 }
+// Add generateMetadata for canonical tag
+export async function generateMetadata({ params }) {
+  const { newsblog } = params || {};
+  // You can customize title/description per blog if you have data
+  const title = 'News & Events - Pure Pharmaceuticals';
+  const description = 'Latest news and events from Pure Pharmaceuticals.';
+  const canonicalUrl = `https://thepurepharma.com/news/${newsblog || 'news1'}`;
+  let metaRobots = "index, follow";
+  return {
+    title,
+    description,
+    robots: metaRobots,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalUrl,
+      type: 'website',
+      images: [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [],
+    },
+  };
+}
 
 const page = () => {
   return (
