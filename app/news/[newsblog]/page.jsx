@@ -1,11 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import * as motion from "motion/react-client";
 import Banner from "@/public/images/newsBanner.svg";
 import PageNameBanner from "@/app/Components/home/PageNameBanner";
 import BreadCrumbs from "@/app/Components/home/BreadCrumbs";
 import Blog1 from "@/public/images/Blog1.png";
-import RelatedProducts from "@/app/Components/product/RelatedProducts";
 import LatestNews from "@/app/Components/home/LatestNews";
 
 // Generate static params for all news articles at build time
