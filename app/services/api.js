@@ -73,7 +73,7 @@ export const getAllProducts = async () => {
 // Function to get home metadata
 export const getHomeMetadata = async () => {
   try {
-    const response = await api.get('/api/home');
+    const response = await api.get('/api/home?populate=*');
     return response.data;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -86,7 +86,7 @@ export const getHomeMetadata = async () => {
 // Function to get about metadata
 export const getAboutMetadata = async () => {
   try {
-    const response = await api.get('/api/about');
+    const response = await api.get('/api/about?populate=*');
     return response.data;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -97,7 +97,7 @@ export const getAboutMetadata = async () => {
 };
 export const getAboutCorporateMetadata = async () => {
   try {
-    const response = await api.get('/api/about-corporate');
+    const response = await api.get('/api/about-corporate?populate=*');
     return response.data;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -110,7 +110,7 @@ export const getAboutCorporateMetadata = async () => {
 // Function to get contact metadata
 export const getContactMetadata = async () => {
   try {
-    const response = await api.get('/api/contact');
+    const response = await api.get('/api/contact?populate=*');
     return response.data;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -123,7 +123,7 @@ export const getContactMetadata = async () => {
 // Function to get career metadata
 export const getCareerMetadata = async () => {
   try {
-    const response = await api.get('/api/career');
+    const response = await api.get('/api/career?populate=*');
     return response.data;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -136,7 +136,7 @@ export const getCareerMetadata = async () => {
 // Function to get news metadata
 export const getNewsMetadata = async () => {
   try {
-    const response = await api.get('/api/new');
+    const response = await api.get('/api/new?populate=*');
     return response.data;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
@@ -149,7 +149,7 @@ export const getNewsMetadata = async () => {
 // Function to get static product page metadata
 export const getProductPageMetadata = async () => {
   try {
-    const response = await api.get('/api/productpage');
+    const response = await api.get('/api/productpage?populate=*');
     return response.data;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
