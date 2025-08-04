@@ -41,7 +41,7 @@ export async function generateMetadata() {
 
   const metaData = metadata.data;
   const title = metaData?.metaTitle ;
-  const description = metaData?.metaDescription;
+  const description = metaData?.metaDescripition;
   const keywords = metaData?.metaKeywords;
   const ogImage = metaData?.ogImage?.url ;
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}`;
