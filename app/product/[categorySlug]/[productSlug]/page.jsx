@@ -4,6 +4,7 @@ import ProductDisplay from '@/app/Components/newProduct/ProductDisplay';
 import Banner from "@/public/images/productBanner.png";
 import React from 'react';
 import { getProductBySlug, getAllProducts } from '@/app/services/api';
+import { notFound } from 'next/navigation';
 
 // Generate static params for all products at build time
 export async function generateStaticParams() {
@@ -68,8 +69,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const page = async ({params}) => {
-  const { productSlug } = params;
+
+const page = async ({ params }) => {
+  const { categorySlug, productSlug } = params;
 
   // Fetch product data to get the content
   let productData = null;
@@ -77,10 +79,20 @@ const page = async ({params}) => {
     const response = await getProductBySlug(productSlug);
     productData = response.data[0];
   } catch (error) {
-    // Log error only in development
     if (process.env.NODE_ENV === 'development') {
       console.error('Error fetching product data:', error);
     }
+  }
+
+  // If product not found, show 404
+  if (!productData) {
+    notFound();
+  }
+
+  // Check if the categorySlug matches any of the product's categories
+  const productCategories = productData.categories?.map(cat => cat.slug) || [];
+  if (!productCategories.includes(categorySlug)) {
+    notFound();
   }
 
   return (
