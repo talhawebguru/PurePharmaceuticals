@@ -20,7 +20,6 @@ const nextConfig = {
       },
     ],
   },
-  reactStrictMode: true,
   // Optimize bundle splitting
   experimental: {
     optimizePackageImports: ['motion/react', 'react-icons'],
